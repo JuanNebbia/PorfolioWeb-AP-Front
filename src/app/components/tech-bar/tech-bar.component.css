@@ -1,0 +1,15 @@
+#tech-logo-container{
+    margin-top: -8rem;
+    display: flex;
+    align-items: center;
+    border: none;
+    border-radius: 0;
+}
+
+.tech-logo{
+    height: 2rem;
+}
+
+#bootstrap-logo{
+    height: 1.5rem;
+}

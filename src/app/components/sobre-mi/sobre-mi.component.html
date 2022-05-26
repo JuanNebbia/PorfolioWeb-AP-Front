@@ -1,0 +1,88 @@
+<div class="card text-center" id="sobre-mi">
+  <div class="card-body">
+    <h3 class="card-title title-hover">Sobre mi</h3>
+    <p class="card-text texto-hover">{{informacion?.descripcion}}</p>
+    <button *ngIf="informacion?.descripcion!==''" class="btn" id="btn-update-sobre-mi" data-bs-toggle="modal" data-bs-target="#updateSobreMiModal" data-original-title="Update" (click)="onOpenModal(informacion)">
+      <i class="bi bi-pencil-fill texto-hover"></i>
+  </button>
+  </div>
+  <div *ngIf="informacion?.descripcion==''">
+    <h5 class="text-white">¡No hay una descripcion cargada para mostrar!</h5>
+    <p class="text-muted">Click aquí abajo para agregar una</p>
+    <app-add-button  id="btn-add-sobre-mi" data-bs-toggle="modal" data-bs-target="#updateSobreMiModal" (click)="onOpenModal(informacion)"></app-add-button>
+
+  </div>
+ 
+</div>
+
+
+<!--Update Modal -->
+<div class="modal fade" id="updateSobreMiModal" tabindex="-1" aria-labelledby="updateSobreMiModal" aria-hidden="true">
+  <div class="modal-dialog">
+      <div class="modal-content">
+          <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Editar Descripción</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+              <form #updateForm="ngForm">
+                  <div class="form-group mb-3" hidden>
+                      <label for="exampleInputEmail1" class="form-label">ID</label>
+                      <input ngModel="{{updateInformacion?.informacionId}}" name="id" type="text" class="form-control" required>
+                  </div>
+                  <div class="form-group mb-3" hidden>
+                    <label for="exampleInputEmail1" class="form-label">nombre</label>
+                    <input ngModel="{{updateInformacion?.nombre}}" name="nombre" type="text" class="form-control" required>
+                  </div>
+                  <div class="form-group mb-3" hidden>
+                    <label for="exampleInputEmail1" class="form-label">apellido</label>
+                    <input ngModel="{{updateInformacion?.apellido}}" name="apellido" type="text" class="form-control" required>
+                  </div>
+                  <div class="form-group mb-3" hidden>
+                    <label for="exampleInputEmail1" class="form-label">titulo</label>
+                    <input ngModel="{{updateInformacion?.titulo}}" name="titulo" type="text" class="form-control" required>
+                  </div>
+                  <div class="form-group mb-3" hidden>
+                    <label for="exampleInputEmail1" class="form-label">locacion</label>
+                    <input ngModel="{{updateInformacion?.locacion}}" name="locacion" type="text" class="form-control" required>
+                  </div>
+                  <div class="form-group mb-3" hidden>
+                    <label for="exampleInputEmail1" class="form-label">imgPerfil</label>
+                    <input ngModel="{{updateInformacion?.imgPerfil}}" name="imgPerfil" type="text" class="form-control" required>
+                  </div>
+                  <div class="form-group mb-3" hidden>
+                    <label for="exampleInputEmail1" class="form-label">imgBanner</label>
+                    <input ngModel="{{updateInformacion?.imgBanner}}" name="imgBanner" type="text" class="form-control" required>
+                  </div>
+                  <div class="form-group mb-3" hidden>
+                    <label for="exampleInputEmail1" class="form-label">email</label>
+                    <input ngModel="{{updateInformacion?.email}}" name="email" type="text" class="form-control" required>
+                  </div>
+                  <div class="form-group mb-3" hidden>
+                    <label for="exampleInputEmail1" class="form-label">facebook</label>
+                    <input ngModel="{{updateInformacion?.facebook}}" name="facebook" type="text" class="form-control" required>
+                  </div>
+                  <div class="form-group mb-3" hidden>
+                    <label for="exampleInputEmail1" class="form-label">instagram</label>
+                    <input ngModel="{{updateInformacion?.instagram}}" name="instagram" type="text" class="form-control" required>
+                  </div>
+                  <div class="form-group mb-3" hidden>
+                    <label for="exampleInputEmail1" class="form-label">github</label>
+                    <input ngModel="{{updateInformacion?.github}}" name="github" type="text" class="form-control" required>
+                  </div>
+                  <div class="form-group mb-3" hidden>
+                    <label for="exampleInputEmail1" class="form-label">telefono</label>
+                    <input ngModel="{{updateInformacion?.telefono}}" name="telefono" type="text" class="form-control" required>
+                  </div>
+                  <div class="form-group mb-3">
+                    <label for="exampleInputEmail1" class="form-label">Editar descripción</label>
+                    <input ngModel="{{updateInformacion?.descripcion}}" name="descripcion" type="text" class="form-control" required>
+                </div>
+                  <div class="modal-footer">
+                      <button class="btn btn-primary" (click)="onUpdateInformacion(updateForm.value)">Guardar cambios</button>
+                  </div>
+              </form>
+          </div>
+      </div>
+  </div>
+</div>

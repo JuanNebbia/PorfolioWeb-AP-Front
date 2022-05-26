@@ -1,0 +1,40 @@
+.navbar{
+    margin-top: -1.3rem;
+    background-color: #09061cdd;
+}
+
+a img {
+    height: 5rem;
+}
+
+button{
+    background-color: #ccc;
+}
+
+.container-fluid{
+    display: flex;
+    justify-content: space-evenly;
+}
+
+ul{
+    margin: auto;
+}
+
+li a{
+    text-decoration: none;
+    margin-right: 2rem;
+    font-size: 1rem;
+}
+
+
+li a:hover{
+    background-color: transparent;
+}
+
+@media screen and (max-width: 1010px){
+    li a{
+        margin-right: 1rem;
+    }
+    
+}
+

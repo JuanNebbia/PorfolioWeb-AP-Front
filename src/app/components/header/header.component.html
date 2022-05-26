@@ -1,0 +1,26 @@
+<header *ngIf="informacion">
+    <div class="card mb-3" id="header-card">
+      <div class="container-fluid px-0" id="banner-container">
+        <img [src]="(informacion.imgBanner)" class="card-img mx-0" alt="imagen de fondo" id="banner">
+      </div>
+      <div class="card-img-overlay">
+        <div class="row">
+            <div class="col-md-5">
+                <div  class="rounded-circle d-flex" id="profile-img-container">
+                    <img [src]="(informacion.imgPerfil)" class="profile-img" id="profile-img" alt="foto perfil">
+                </div>
+            </div>
+            <div class="col-md-7">
+                <div class="card-body" id="card-body-1">
+                    <div class="container-fluid" id="titles-container">
+                        <h1 class="card-title text-white">{{informacion.nombre + " " + informacion.apellido}}</h1> 
+                        <hr>
+                        <h2 class="card-subtitle h5 text-white" >{{informacion.titulo}}</h2>
+                        <p class="card-subtitle text-white" id="header-locacion">{{informacion.locacion}}</p>
+                    </div> 
+                </div>
+            </div>
+        </div>
+      </div>
+    </div>   
+  </header>

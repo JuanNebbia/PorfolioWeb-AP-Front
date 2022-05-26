@@ -1,0 +1,153 @@
+<div class="card text-center background-color" id="educacion">
+    <div class="card-body" id="main-card-body">
+        <h3 class="card-title title-hover">Educación</h3>
+        <div class="main-container">
+            <div class="educaciones-container" *ngFor="let educacion of educaciones">
+                <div class="row">
+                    <div class="col-3">
+                        <div><img src="assets/img/punto1.svg" alt="" id="punto"></div>
+                    </div>
+                    <div class="col-4">
+                        <div class="container-fluid" id="education-item-card">
+                            <div class="row g-0">
+                                <div id="education-item-titles">
+                                    <p class="texto-hover" id="educacion-nivel">{{educacion.nivel}}</p>
+                                    <h5 class="card-title title-hover">{{educacion.institucion}}</h5>
+                                    <p class="texto-hover">{{educacion.titulo}}</p>
+                                    <p class="texto-hover">{{educacion.fechaInicio}} - {{educacion.fechaFin}} <span *ngIf="!educacion?.fechaFin">actualidad</span></p>
+                                    <button class="btn" id="btn-update-educacion" data-bs-toggle="modal" data-bs-target="#updateEducacionModal" data-original-title="Update" (click)="onOpenModal('update', educacion)">
+                                        <i class="bi bi-pencil-fill texto-hover"></i>
+                                    </button>
+                                    <button class="btn" id="btn-delete-educacion" data-bs-toggle="modal" data-bs-target="#deleteEducacionModal" data-original-title="Delete" (click)="onOpenModal('delete', educacion)">
+                                        <i class="bi bi bi-trash3-fill texto-hover"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-5">
+                        <div class="educacion-img-container">
+                            <img *ngIf="educacion.imgEducacion" src="{{educacion.imgEducacion}}" id="img-educacion" alt="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div *ngIf="educaciones?.length==0">
+            <h4 class="text-white">¡No hay estudios cargados para mostrar!</h4>
+            <p class="text-muted">Click aquí abajo para agregar nuevas entradas</p>
+        </div>
+        <app-add-button  id="btn-add-educacion" data-bs-toggle="modal" data-bs-target="#addEducacionModal" (click)="onOpenModal('add')"></app-add-button>
+
+
+        <!--Add Modal -->
+        <div class="modal fade" id="addEducacionModal" tabindex="-1" aria-labelledby="addEducacionModal" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel">Añadir nueva Educación</h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form #addForm="ngForm" (ngSubmit)="onAddEducacion(addForm)">
+                        <div class="mb-3">
+                            <label for="exampleInputEmail1" class="form-label">Nivel de Estudio</label>
+                            <input ngModel name="nivel" type="text" class="form-control" id="educacion-form-nivel" placeholder="por ej. universitario" required>
+                          </div>
+                          <div class="mb-3">
+                            <label for="exampleInputPassword1" class="form-label">Institución</label>
+                            <input ngModel name="institucion" type="text" class="form-control" id="educacion-form-institucion" placeholder="por ej. UBA" required>
+                          </div>
+                          <div class="mb-3">
+                            <label for="exampleInputPassword1" class="form-label">Titulo</label>
+                            <input ngModel name="titulo" type="text" class="form-control" id="educacion-form-titulo" placeholder="por ej. Ingenieria en sistemas" required>
+                          </div>
+                          <div class="mb-3 form-check">
+                            <label class="form-check-label" for="exampleCheck1">Año de inicio</label>
+                            <input ngModel name="fechaInicio" class="mx-2" type="number" min="1900" max="2099" step="1" value="2022" required>
+                            <label class="form-check-label" for="exampleCheck1">Año de finalización</label>
+                            <input ngModel name="fechaFin" class="mx-2" type="number" min="1900" max="2099" step="1" value="2022">
+                          </div>
+                          <div class="mb-3">
+                            <label for="exampleInputPassword1" class="form-label">Link a imagen</label>
+                            <input ngModel name="imgEducacion" type="text" class="form-control" id="educacion-form-img">
+                          </div>
+                          <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                            <button type="submit" [disabled]="addForm.invalid" class="btn btn-primary">Guardar cambios</button>
+                          </div>
+                    </form>
+                </div>
+              </div>
+            </div>
+        </div>
+
+        <!--Update Modal -->
+        <div class="modal fade" id="updateEducacionModal" tabindex="-1" aria-labelledby="updateEducacionModal" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Editar Educación: {{updateEducacion?.nivel}}</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form #updateForm="ngForm">
+                            <div class="form-group mb-3" hidden>
+                                <label for="exampleInputEmail1" class="form-label">ID</label>
+                                <input ngModel="{{updateEducacion?.idEducacion}}" name="idEducacion" type="text" class="form-control" id="nivel" placeholder="por ej. universitario" required>
+                            </div>
+                            <div class="form-group mb-3">
+                                <label for="exampleInputEmail1" class="form-label">Nivel de Estudio</label>
+                                <input ngModel="{{updateEducacion?.nivel}}" name="nivel" type="text" class="form-control" id="nivel" placeholder="por ej. universitario" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="exampleInputPassword1" class="form-label">Institución</label>
+                                <input ngModel="{{updateEducacion?.institucion}}" name="institucion" type="text" class="form-control" id="institucion" placeholder="por ej. UBA" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="exampleInputPassword1" class="form-label">Titulo</label>
+                                <input ngModel="{{updateEducacion?.titulo}}" name="titulo" type="text" class="form-control" id="titulo" placeholder="por ej. Ingenieria en sistemas" required>
+                            </div>
+                            <div class="mb-3 form-check">
+                                <label class="form-check-label" for="exampleCheck1">Año de inicio</label>
+                                <input ngModel="{{updateEducacion?.fechaInicio}}" name="fechaInicio" class="mx-2" type="number" min="1900" max="2099" step="1" value="2022" required>
+                                <label class="form-check-label" for="exampleCheck1">Año de finalización</label>
+                                <input ngModel="{{updateEducacion?.fechaFin}}" name="fechaFin" class="mx-2" type="number" min="1900" max="2099" step="1" value="2022">
+                            </div>
+                            <div class="mb-3">
+                                <label for="exampleInputPassword1" class="form-label">Link a imagen</label>
+                                <input ngModel="{{updateEducacion?.imgEducacion}}" name="imgEducacion" type="text" class="form-control" id="imgEducacion">
+                            </div>
+                            <div class="modal-footer">
+                                <button class="btn btn-primary" (click)="onUpdateEducacion(updateForm.value)">Guardar cambios</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!--Delete Modal -->
+        <div class="modal fade" id="deleteEducacionModal" tabindex="-1" aria-labelledby="deleteEducacionModal" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Borrar Educación: {{deleteEducacion?.nivel}}</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <p>¿Seguro querés eliminar esta educación?</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                            No
+                        </button>
+                        <button type="button" class="btn btn-secondary" (click)="onDeleteEducacion(deleteEducacion!.idEducacion)" data-bs-dismiss="modal">
+                            Sí
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

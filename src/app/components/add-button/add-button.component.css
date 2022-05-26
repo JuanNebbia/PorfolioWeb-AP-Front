@@ -1,0 +1,13 @@
+button{
+    margin: 3rem 0 5rem;
+    width: 6rem;
+    background-color: rgb(38, 145, 130);
+}
+
+button:hover{
+    background-color: rgb(66, 228, 206);
+}
+
+.bi-plus-lg{
+    font-size: 1.5rem;
+}

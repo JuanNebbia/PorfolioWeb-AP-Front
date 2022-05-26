@@ -1,0 +1,32 @@
+html {
+    box-sizing: border-box;
+    background-color: #09061c;
+  }
+  *, *:before, *:after {
+    box-sizing: inherit;
+  }
+
+  *{
+    font-family: 'Roboto', sans-serif;
+  }
+
+  .title-hover{
+    color: #a728b0;
+    text-shadow: 0px 0px 4px #000;
+  }
+
+  .title-hover:hover{
+    color: #f40be9;
+  }
+
+  .texto-hover{
+    color: #877f9d;
+  }
+
+  .texto-hover:hover{
+    color: #cbc3d0;
+  }
+
+  .background-color{
+    background-color: #09061c;
+  }

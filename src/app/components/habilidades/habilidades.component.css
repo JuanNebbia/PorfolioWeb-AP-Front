@@ -1,0 +1,65 @@
+#habilidades{
+    padding: 8% ;
+    background: linear-gradient(0deg, rgba(47,30,74,1) 0%, rgba(9,6,28,1) 100%);
+    border-radius:0;
+    border: none;
+}
+
+p{
+    margin: 0;
+}
+
+h3{
+    margin-bottom: 5rem;
+    font-size: 2.5rem;
+}
+
+h6{
+    text-shadow: 0px 0px 3px #000;
+    display: inline-block;
+    margin: 0;
+}
+
+#tech-logo-container{
+    display: flex;
+}
+
+
+
+#btn-update-habilidades, #btn-delete-habilidades{
+    float: left;
+
+}
+
+
+
+.progress{
+    height: 0.5rem;
+    width: 100%;
+    margin: 0 auto;
+    align-self: center;
+    box-shadow:  0 0 10px #f40be9;
+}
+
+
+#logo-habilidad{
+    height: 1.5rem;
+    width: 1.5rem;
+    margin-left: auto;
+    align-self: center;
+}
+
+#titulo-habilidad{
+    color: #fff;
+    font-size: 1.7rem;
+}
+
+
+.row{
+    height: fit-content;
+    margin: 0 15% 4rem;
+}
+
+.col-8{
+    display: flex;
+}
