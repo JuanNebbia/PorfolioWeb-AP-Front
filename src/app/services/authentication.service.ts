@@ -1,29 +1,41 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { BehaviorSubject, Observable } from 'rxjs';
-import { map } from 'rxjs';
+import { AngularFireAuth } from '@angular/fire/compat/auth'
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthenticationService {
-  url="http://localhost:8080/api/login";
-  currentUserSubjet:BehaviorSubject<any>;
+isitLogged:boolean=false;
 
-  constructor(private http:HttpClient) {
-    console.log("el servicio de autenticación está corriendo");
-    this.currentUserSubjet= new BehaviorSubject<any>(JSON.parse(sessionStorage.getItem('currentUser')||'{}'))
-   }
+  constructor(private auth:AngularFireAuth){}
 
-   IniciarSesion(credenciales:any):Observable<any>{
-     return this.http.post(this.url, credenciales).pipe(map(data=>{
-       sessionStorage.setItem('currentUser', JSON.stringify(data));
-       this.currentUserSubjet.next(data);
-       return data;
-     }))
-   }
+  async register(email:string,password:string){
+    try{
+      return await this.auth.createUserWithEmailAndPassword(email,password)
+    }
+    catch(err){
+      console.log("error en register: ", err);
+      return null;
+    }
+  }
 
-   get UsuarioAutenticado() {
-     return this.currentUserSubjet.value;
-   }
+
+ async login(email:string,password:string){
+    try{
+      return await this.auth.signInWithEmailAndPassword(email,password)
+    }
+    catch(err){
+      console.log("error en login: ", err);
+      return null;
+    }
+ }
+
+ getLoggedUser(){
+  return this.auth.authState;
+ }
+
+ logout(){
+   this.auth.signOut();
+ }
+
 }

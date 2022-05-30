@@ -9,14 +9,16 @@ import { ExperienciaComponent } from './components/experiencia/experiencia.compo
 import { EducacionComponent } from './components/educacion/educacion.component';
 import { HabilidadesComponent } from './components/habilidades/habilidades.component';
 import { HeaderComponent } from './components/header/header.component';
-import { IniciarSesionComponent } from './components/iniciar-sesion/iniciar-sesion.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { ProyectosComponent } from './components/proyectos/proyectos.component';
 import { SobreMiComponent } from './components/sobre-mi/sobre-mi.component';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FormsModule } from '@angular/forms';
 import { TechBarComponent } from './components/tech-bar/tech-bar.component';
 import { AddButtonComponent } from './components/add-button/add-button.component';
 import { ContactoComponent } from './components/contacto/contacto.component';
+import { LoginComponent } from './components/login/login.component';
+import { AngularFireModule } from '@angular/fire/compat';
+import { environment } from 'src/environments/environment';
 
 @NgModule({
   declarations: [
@@ -26,20 +28,20 @@ import { ContactoComponent } from './components/contacto/contacto.component';
     EducacionComponent,
     HabilidadesComponent,
     HeaderComponent,
-    IniciarSesionComponent,
     NavbarComponent,
     ProyectosComponent,
     SobreMiComponent,
     TechBarComponent,
     AddButtonComponent,
-    ContactoComponent
+    ContactoComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule
+    AngularFireModule.initializeApp(environment.firebase)
   ],
   providers: [],
   bootstrap: [AppComponent]

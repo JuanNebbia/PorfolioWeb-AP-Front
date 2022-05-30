@@ -9,7 +9,7 @@ import { Educacion } from '../models/educacion';
 })
 export class EducacionService {
 
-  private apiServerUrl=environment.apiBaseUrl;
+  private apiServerUrl = "https://porfolio-web-ap.herokuapp.com"
 
   constructor(private http: HttpClient) { }
 

@@ -1,0 +1,50 @@
+.container-fluid{
+    background: linear-gradient(0deg, rgba(47,30,74,1) 0%, rgba(9,6,28,1) 100%);
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+}
+
+.card{
+    background-color: transparent;
+    width: 50%;
+    height: fit-content;
+    padding: 2%;
+    margin-top: auto;
+    margin-bottom: auto;
+    border: none;
+}
+
+a{
+    text-decoration: none;
+    color: black;
+}
+
+input{
+    margin-bottom: 2rem;
+}
+
+.ventana-ingreso{
+    width: 100%;
+    padding: 2rem;
+    background-color: #000;
+    text-align: center;
+}
+
+
+.ventana-ingreso button{
+    color: #000;
+    display: block;
+    margin: 0.5rem auto;
+    width: 30%;
+}
+
+.ventana-ingreso p{
+    font-size: 1.5rem;
+}
+
+label{
+    margin-bottom: 0.4rem;
+}

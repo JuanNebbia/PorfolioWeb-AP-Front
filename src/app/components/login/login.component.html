@@ -1,0 +1,21 @@
+<div class="container-fluid">
+    <div class="card text-center">
+        <div>
+            <h1 class="title-hover">Iniciar Sesión</h1>
+        </div>
+        <div class="card-body p-4">
+            <label class="texto-hover">Email</label>
+            <input type="email" class="form-control" [(ngModel)]="usuario.email" placeholder="Ingrese el Email" required>
+            <label class="texto-hover">Contraseña</label>
+            <input type="password" class="form-control" [(ngModel)]="usuario.password" placeholder="Ingrese la contraseña" required>
+            <button class="btn btn-primary" (click)="login()">Ingresar</button>
+        </div>
+        <div class="ventana-ingreso" *ngIf="userLogged|async as user">
+            <p class="title-hover">Usted ha ingresado exitosamente como {{user.email}}</p>
+            <button class="btn btn-success"><a href="/porfolio">Acceder al Porfolio</a></button>
+            <button class="btn btn-danger" (click)="logout()">Salir</button>
+        </div> 
+    </div>   
+</div>
+
+
