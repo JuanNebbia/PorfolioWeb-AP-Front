@@ -76,7 +76,7 @@
                   </div>
                   <div class="form-group mb-3">
                     <label for="exampleInputEmail1" class="form-label">Editar descripción</label>
-                    <textarea id="editar-descripcion-input" ngModel="{{updateInformacion?.descripcion}}" name="descripcion" type="text-area" class="form-control" required></textarea>
+                    <input id="editar-descripcion-input" ngModel="{{updateInformacion?.descripcion}}" name="descripcion" type="text-area" class="form-control" required>
                 </div>
                   <div class="modal-footer">
                       <button class="btn btn-primary" (click)="onUpdateInformacion(updateForm.value)">Guardar cambios</button>
