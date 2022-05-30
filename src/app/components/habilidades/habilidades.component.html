@@ -4,7 +4,7 @@
         <div class="main-container">
             <div class="habilidades-container" *ngFor="let habilidad of habilidades">
                 <h6 id="titulo-habilidad" [style]="{'color': habilidad.color}">{{habilidad.tecnologia}}</h6>
-                <p class="text-white">{{habilidad.descripcion}}</p>
+                <p id="habilidad-descripcion" class="text-white">{{habilidad.descripcion}}</p>
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col-2" id="tech-logo-container">

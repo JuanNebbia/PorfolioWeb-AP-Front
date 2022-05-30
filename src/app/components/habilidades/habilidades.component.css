@@ -63,3 +63,8 @@ h6{
 .col-8{
     display: flex;
 }
+
+
+#habilidad-descripcion{
+    margin: 1rem 0;
+}
