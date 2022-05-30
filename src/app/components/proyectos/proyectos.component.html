@@ -53,15 +53,15 @@
                     <form #addForm="ngForm" (ngSubmit)="onAddProyectos(addForm)">
                         <div class="mb-3">
                             <label for="exampleInputEmail1" class="form-label">Titulo</label>
-                            <input ngModel name="titulo" type="text" class="form-control" id="proyectos-form-nivel" placeholder="por ej. universitario" required>
+                            <input ngModel name="titulo" type="text" class="form-control" id="proyectos-form-nivel" placeholder="Indique el título de su proyecto" required>
                           </div>
                           <div class="mb-3">
                             <label for="exampleInputPassword1" class="form-label">Descripcion</label>
-                            <input ngModel name="descripcion" type="text" class="form-control" id="proyectos-form-institucion" placeholder="por ej. UBA" required>
+                            <input ngModel name="descripcion" type="text" class="form-control" id="proyectos-form-institucion" placeholder="Describa su proyecto" required>
                           </div>
                           <div class="mb-3">
                             <label for="exampleInputPassword1" class="form-label">Link al proyecto</label>
-                            <input ngModel name="linkProyectos" type="text" class="form-control" id="proyectos-form-institucion" placeholder="por ej. UBA" required>
+                            <input ngModel name="linkProyectos" type="text" class="form-control" id="proyectos-form-institucion" placeholder="" required>
                           </div>
                           <div class="mb-3">
                             <label for="exampleInputPassword1" class="form-label">Link a imagen</label>
@@ -89,19 +89,19 @@
                         <form #updateForm="ngForm">
                             <div class="form-group mb-3" hidden>
                                 <label for="exampleInputEmail1" class="form-label">ID</label>
-                                <input ngModel="{{updateProyectos?.idProyectos}}" name="idProyectos" type="text" class="form-control" id="nivel" placeholder="por ej. universitario" required>
+                                <input ngModel="{{updateProyectos?.idProyectos}}" name="idProyectos" type="text" class="form-control" id="nivel" required>
                             </div>
                             <div class="form-group mb-3">
                                 <label for="exampleInputEmail1" class="form-label">Titulo</label>
-                                <input ngModel="{{updateProyectos?.titulo}}" name="titulo" type="text" class="form-control" id="nivel" placeholder="por ej. universitario" required>
+                                <input ngModel="{{updateProyectos?.titulo}}" name="titulo" type="text" class="form-control" id="nivel" required>
                             </div>
                             <div class="mb-3">
                                 <label for="exampleInputPassword1" class="form-label">Descripción</label>
-                                <input ngModel="{{updateProyectos?.descripcion}}" name="descripcion" type="text" class="form-control" id="institucion" placeholder="por ej. UBA" required>
+                                <input ngModel="{{updateProyectos?.descripcion}}" name="descripcion" type="text" class="form-control" id="institucion" required>
                             </div>
                             <div class="mb-3">
                                 <label for="exampleInputPassword1" class="form-label">Link al proyecto</label>
-                                <input ngModel name="linkProyectos" type="text" class="form-control" id="proyectos-form-institucion" placeholder="por ej. UBA" required>
+                                <input ngModel name="linkProyectos" type="text" class="form-control" id="proyectos-form-institucion" required>
                               </div>
                             <div class="mb-3">
                                 <label for="exampleInputPassword1" class="form-label">Link a imagen</label>
