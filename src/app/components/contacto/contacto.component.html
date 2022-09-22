@@ -11,7 +11,7 @@
                 <p class="title-hover">{{informacion?.locacion}}</p>
             </div>
             <div class="col-4" *ngIf="informacion?.email">
-                <a href="" class="inactive-link">
+                <a [href]="'https://mail.google.com/mail/?view=cm&fs=1&to='+ informacion?.email" target="_blank">
                     <div class="logo-container">
                         <i class="bi bi-envelope"></i>
                     </div>

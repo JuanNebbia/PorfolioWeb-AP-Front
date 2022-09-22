@@ -37,5 +37,4 @@ isitLogged:boolean=false;
  logout(){
    this.auth.signOut();
  }
-
 }
