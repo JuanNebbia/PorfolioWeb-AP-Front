@@ -14,6 +14,7 @@ export class ProyectosComponent implements OnInit {
   public proyectos:Proyectos[]=[];
   public updateProyectos:Proyectos | undefined;
   public deleteProyectos:Proyectos | undefined;
+  public loading:boolean = true;
 
   constructor(private proyectosService:ProyectosService) { }
 
@@ -28,7 +29,8 @@ export class ProyectosComponent implements OnInit {
       },
       error:(error:HttpErrorResponse)=>{
         alert(error.message);
-      }
+      },
+      complete:()=>this.loading=false
     })
   }
 

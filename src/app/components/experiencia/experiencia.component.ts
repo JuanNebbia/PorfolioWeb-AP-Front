@@ -14,6 +14,7 @@ export class ExperienciaComponent implements OnInit {
   public experiencias:Experiencia[]=[];
   public updateExperiencia:Experiencia | undefined;
   public deleteExperiencia:Experiencia | undefined;
+  public loading:boolean = true;
 
   constructor(private experienciaService:ExperienciaService) { }
 
@@ -27,7 +28,10 @@ export class ExperienciaComponent implements OnInit {
         this.experiencias=Response;
       },
       error:(error:HttpErrorResponse)=>{
-        alert(error.message);
+        console.log(error.message);
+      },
+      complete: () => {
+        this.loading = false;
       }
     })
   }
@@ -41,7 +45,7 @@ export class ExperienciaComponent implements OnInit {
         addForm.reset();
       },
       error:(error:HttpErrorResponse)=>{
-        alert(error.message);
+        console.log(error.message);
         addForm.reset;
       }
     })
@@ -56,7 +60,7 @@ export class ExperienciaComponent implements OnInit {
         this.getExperiencias();
       },
       error:(error:HttpErrorResponse)=>{
-        alert(error.message);
+        console.log(error.message);
       }
     })
   }
@@ -68,7 +72,7 @@ export class ExperienciaComponent implements OnInit {
         this.getExperiencias();
       },
       error:(error:HttpErrorResponse)=>{
-        alert(error.message);
+        console.log(error.message);
       }
     })
   }

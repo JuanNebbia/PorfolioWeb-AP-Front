@@ -1,4 +1,5 @@
-<div class="card text-center background-color" id="educacion">
+<app-loader *ngIf='loading'></app-loader>
+<div *ngIf="educaciones && !loading" class="card text-center background-color" id="educacion">
     <div class="card-body" id="main-card-body">
         <h3 class="card-title title-hover">Educación</h3>
         <div class="main-container">
@@ -11,15 +12,15 @@
                         <div class="container-fluid" id="education-item-card">
                             <div class="row g-0">
                                 <div id="education-item-titles">
-                                    <p class="texto-hover" id="educacion-nivel">{{educacion.nivel}}</p>
+                                    <p class="main-text" id="educacion-nivel">{{educacion.nivel}}</p>
                                     <h5 class="card-title title-hover">{{educacion.institucion}}</h5>
-                                    <p class="texto-hover">{{educacion.titulo}}</p>
-                                    <p class="texto-hover">{{educacion.fechaInicio}} - {{educacion.fechaFin}} <span *ngIf="!educacion?.fechaFin">actualidad</span></p>
+                                    <p class="main-text">{{educacion.titulo}}</p>
+                                    <p class="main-text">{{educacion.fechaInicio}} - {{educacion.fechaFin}} <span *ngIf="!educacion?.fechaFin">actualidad</span></p>
                                     <button class="btn" id="btn-update-educacion" data-bs-toggle="modal" data-bs-target="#updateEducacionModal" data-original-title="Update" (click)="onOpenModal('update', educacion)">
-                                        <i class="bi bi-pencil-fill texto-hover"></i>
+                                        <i class="bi bi-pencil-fill text-hover"></i>
                                     </button>
                                     <button class="btn" id="btn-delete-educacion" data-bs-toggle="modal" data-bs-target="#deleteEducacionModal" data-original-title="Delete" (click)="onOpenModal('delete', educacion)">
-                                        <i class="bi bi bi-trash3-fill texto-hover"></i>
+                                        <i class="bi bi bi-trash3-fill text-hover"></i>
                                     </button>
                                 </div>
                             </div>

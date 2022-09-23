@@ -16,6 +16,7 @@ export class HabilidadesComponent implements OnInit {
   public habilidades:Habilidades[]=[];
   public updateHabilidades:Habilidades | undefined;
   public deleteHabilidades:Habilidades | undefined;
+  public loading:boolean = true;
 
   constructor(private habilidadesService:HabilidadesService) { }
 
@@ -31,8 +32,9 @@ export class HabilidadesComponent implements OnInit {
         this.habilidades=Response;
       },
       error:(error:HttpErrorResponse)=>{
-        alert(error.message);
-      }
+        console.log(error.message);
+      },
+      complete: () => this.loading = false
     })
   }
 
@@ -42,7 +44,7 @@ export class HabilidadesComponent implements OnInit {
         this.habilidades=Response;
       },
       error:(error:HttpErrorResponse)=>{
-        alert(error.message);
+        console.log(error.message);
       }
     })
   }
@@ -56,7 +58,7 @@ export class HabilidadesComponent implements OnInit {
         addForm.reset();
       },
       error:(error:HttpErrorResponse)=>{
-        alert(error.message);
+        console.log(error.message);
         addForm.reset;
       }
     })
@@ -71,7 +73,7 @@ export class HabilidadesComponent implements OnInit {
         this.getHabilidades();
       },
       error:(error:HttpErrorResponse)=>{
-        alert(error.message);
+        console.log(error.message);
       }
     })
   }
@@ -83,7 +85,7 @@ export class HabilidadesComponent implements OnInit {
         this.getHabilidades();
       },
       error:(error:HttpErrorResponse)=>{
-        alert(error.message);
+        console.log(error.message);
       }
     })
   }

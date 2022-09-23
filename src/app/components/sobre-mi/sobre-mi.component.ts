@@ -12,6 +12,7 @@ export class SobreMiComponent implements OnInit {
   
   public informacion:Informacion | undefined;
   public updateInformacion:Informacion | undefined;
+  public loading:boolean = true;
 
   constructor(private headerService:HeaderService) { }
 
@@ -25,8 +26,9 @@ export class SobreMiComponent implements OnInit {
         this.informacion = response;
       },
       error:(error:HttpErrorResponse)=>{
-        alert(error.message);
-      }
+        console.log(error.message);
+      },
+      complete:()=>this.loading=false
     });
   }
 
@@ -39,7 +41,7 @@ export class SobreMiComponent implements OnInit {
         this.getInformacion();
       },
       error:(error:HttpErrorResponse)=>{
-        alert(error.message);
+        console.log(error.message);
       }
     })
   }

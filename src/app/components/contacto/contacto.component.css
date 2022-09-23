@@ -31,11 +31,20 @@ a{
     width: fit-content;
 }
 
-.logo-container:hover{
+.contact-item-container:hover .logo-container{
     box-shadow: 0 0 5px #000;
     transform: scale(1.05);
     transition: transform 0.1s;
 }
+
+.contact-text{
+    color: #a728b0;
+}
+
+.contact-item-container:hover .contact-text{
+    color: #f40be9;
+}
+
 
 p{
     font-size: 1rem;

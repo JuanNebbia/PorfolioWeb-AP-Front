@@ -1,5 +1,5 @@
-
-<div class="card text-center" id="proyectos">
+<app-loader *ngIf="loading"></app-loader>
+<div *ngIf="proyectos && !loading" class="card text-center" id="proyectos">
     <div class="card-body">
         <h3 class="card-title title-hover">Proyectos</h3>
         <div class="main-container">
@@ -19,16 +19,14 @@
                             <div class="col-4">
                                 <div id="item-proyecto-card-buttons">
                                     <button class="btn" id="btn-update-proyectos" data-bs-toggle="modal" data-bs-target="#updateProyectosModal" data-original-title="Update" (click)="onOpenModal('update', proyecto)">
-                                        <i class="bi bi-pencil-fill texto-hover"></i>
+                                        <i class="bi bi-pencil-fill text-hover"></i>
                                     </button>
                                     <button class="btn" id="btn-delete-proyectos" data-bs-toggle="modal" data-bs-target="#deleteProyectosModal" data-original-title="Delete" (click)="onOpenModal('delete', proyecto)">
-                                        <i class="bi bi bi-trash3-fill texto-hover"></i>
+                                        <i class="bi bi bi-trash3-fill text-hover"></i>
                                     </button>
                                 </div>
                             </div>
                         </div>
-                            
-                            
                     </div>
                 </div>
             </div>

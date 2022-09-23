@@ -1,4 +1,5 @@
-<div class="card text-center background-color" id="experiencia">
+<app-loader *ngIf='loading'></app-loader>
+<div *ngIf="experiencias && !loading" class="card text-center background-color" id="experiencia">
   <div class="card-body" id="main-card-body">
       <h3 class="card-title title-hover">Experiencia</h3>
       <div class="main-container">
@@ -13,14 +14,14 @@
                       <div class="container-fluid" id="education-item-card">
                           <div class="row g-0">
                               <div id="experiencia-item-titles">
-                                  <p class="texto-hover" id="experiencia-nivel">{{experiencia.cargo}}</p>
+                                  <p class="main-text" id="experiencia-nivel">{{experiencia.cargo}}</p>
                                   <h5 class="card-title title-hover">{{experiencia.empresa}}</h5>
-                                  <p class="texto-hover">{{experiencia.fechaInicio}} - {{experiencia.fechaFin}}<span *ngIf="!experiencia?.fechaFin">actualidad</span></p>
+                                  <p class="main-text">{{experiencia.fechaInicio}} - {{experiencia.fechaFin}}<span *ngIf="!experiencia?.fechaFin">actualidad</span></p>
                                   <button class="btn" id="btn-update-experiencia" data-bs-toggle="modal" data-bs-target="#updateExperienciaModal" data-original-title="Update" (click)="onOpenModal('update', experiencia)">
-                                      <i class="bi bi-pencil-fill texto-hover"></i>
+                                      <i class="bi bi-pencil-fill text-hover"></i>
                                   </button>
                                   <button class="btn" id="btn-delete-experiencia" data-bs-toggle="modal" data-bs-target="#deleteExperienciaModal" data-original-title="Delete" (click)="onOpenModal('delete', experiencia)">
-                                      <i class="bi bi bi-trash3-fill texto-hover"></i>
+                                      <i class="bi bi bi-trash3-fill text-hover"></i>
                                   </button>
                               </div>
                           </div>

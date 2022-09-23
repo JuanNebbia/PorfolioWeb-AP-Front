@@ -18,18 +18,21 @@ html {
     color: #f40be9;
   }
 
-  .texto-hover{
+  .main-text{
+    color: #cbc3d0
+  }
+
+  .text-hover{
     color: #877f9d;
   }
 
-  .texto-hover:hover{
+  .text-hover:hover{
     color: #cbc3d0;
   }
 
   .background-color{
     background-color: #09061c;
   }
-
   
   body::-webkit-scrollbar {
     width: 0.7rem;

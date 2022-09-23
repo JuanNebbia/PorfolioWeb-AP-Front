@@ -11,15 +11,26 @@
     padding: 0;
 }
 
+#banner-container{
+    height: 100%;
+}
+
+#banner-container:after {
+    content:'';
+    position:absolute;
+    left:0; top:0;
+    width:100%; height:100%;
+    display:inline-block;
+    background: -webkit-linear-gradient(top, #09061c00 10%,#09061cff 100%); /* Chrome10+,Safari5.1+ */
+  }
+
 #banner{
-    min-height: 100vh; 
+    height: 100%; 
     object-fit: cover;
     object-position: top;
 }
 
-#banner-container{
-    height: fit-content;
-}
+
 
 .col-md-5, .col-md-7{
     display: flex;

@@ -11,6 +11,7 @@ import { HeaderService } from 'src/app/services/header.service';
 export class HeaderComponent implements OnInit {
 
   public informacion:Informacion | undefined;
+  public loading:boolean = true;
 
   constructor(private headerService:HeaderService) { }
 
@@ -24,8 +25,9 @@ export class HeaderComponent implements OnInit {
         this.informacion = response;
       },
       error:(error:HttpErrorResponse)=>{
-        alert(error.message);
-      }
+        console.log(error.message);
+      },
+      complete: () => this.loading = false
     });
   }
 

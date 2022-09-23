@@ -14,6 +14,7 @@ export class EducacionComponent implements OnInit {
   public educaciones:Educacion[]=[];
   public updateEducacion:Educacion | undefined;
   public deleteEducacion:Educacion | undefined;
+  public loading:boolean = true;
 
   constructor(private educacionService:EducacionService) { }
 
@@ -27,7 +28,10 @@ export class EducacionComponent implements OnInit {
         this.educaciones=Response;
       },
       error:(error:HttpErrorResponse)=>{
-        alert(error.message);
+        console.log(error.message);
+      },
+      complete: () => {
+        this.loading = false;
       }
     })
   }
@@ -41,7 +45,7 @@ export class EducacionComponent implements OnInit {
         addForm.reset();
       },
       error:(error:HttpErrorResponse)=>{
-        alert(error.message);
+        console.log(error.message);
         addForm.reset;
       }
     })
@@ -56,7 +60,7 @@ export class EducacionComponent implements OnInit {
         this.getEducaciones();
       },
       error:(error:HttpErrorResponse)=>{
-        alert(error.message);
+        console.log(error.message);
       }
     })
   }
@@ -68,7 +72,7 @@ export class EducacionComponent implements OnInit {
         this.getEducaciones();
       },
       error:(error:HttpErrorResponse)=>{
-        alert(error.message);
+        console.log(error.message);
       }
     })
   }

@@ -1,5 +1,6 @@
-<div class="card text-center" id="habilidades">
-    <div class="card-body">
+<app-loader *ngIf='loading'></app-loader>
+<div *ngIf="habilidades && !loading" class="card text-center" id="habilidades">
+    <div *ngIf="habilidades && !loading" class="card-body">
         <h3 class="card-title title-hover">Habilidades</h3>
         <div class="main-container">
             <div class="habilidades-container" *ngFor="let habilidad of habilidades">
@@ -22,10 +23,10 @@
                         </div>
                         <div class="col-2">
                             <button class="btn" id="btn-update-habilidades" data-bs-toggle="modal" data-bs-target="#updateHabilidadesModal" data-original-title="Update" (click)="onOpenModal('update', habilidad)">
-                                <i class="bi bi-pencil-fill texto-hover"></i>
+                                <i class="bi bi-pencil-fill text-hover"></i>
                             </button>
                             <button class="btn" id="btn-delete-habilidades" data-bs-toggle="modal" data-bs-target="#deleteHabilidadesModal" data-original-title="Delete" (click)="onOpenModal('delete', habilidad)">
-                                <i class="bi bi bi-trash3-fill texto-hover"></i>
+                                <i class="bi bi bi-trash3-fill text-hover"></i>
                             </button>
                         </div>
                     </div>
