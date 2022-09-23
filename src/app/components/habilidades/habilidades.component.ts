@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Habilidades } from 'src/app/models/habilidades';
 import { HabilidadesService } from 'src/app/services/habilidades.service';
+import { AuthenticationService } from 'src/app/services/authentication.service';
 
 
 @Component({
@@ -17,8 +18,9 @@ export class HabilidadesComponent implements OnInit {
   public updateHabilidades:Habilidades | undefined;
   public deleteHabilidades:Habilidades | undefined;
   public loading:boolean = true;
+  userLogged = this.authenticationService.getLoggedUser();
 
-  constructor(private habilidadesService:HabilidadesService) { }
+  constructor(private habilidadesService:HabilidadesService, private authenticationService:AuthenticationService) { }
 
 
   

@@ -15,7 +15,7 @@
         <li class="nav-item me-auto"><a class="nav-item title-hover" href="/porfolio#habilidades">HABILIDADES</a></li>
         <li class="nav-item me-auto"><a class="nav-item title-hover" href="/porfolio#proyectos">PROYECTOS</a></li>
         <li class="nav-item me-auto"><a class="nav-item title-hover" href="/porfolio#contacto">CONTACTO</a></li>
-        <li class="nav-item me-auto"><a class="nav-item text-hover" id="btn-logout" href="/login" (click)="logout()">SALIR</a></li>
+        <li *ngIf="userLogged|async as user" class="nav-item me-auto"><button class="nav-item text-hover" id="btn-logout" (click)="logout()">SALIR</button></li>
       </ul>
     </div>
   </div>

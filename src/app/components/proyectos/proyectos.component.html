@@ -17,7 +17,7 @@
                                 <p class="text-white" id="proyecto-descripcion">{{proyecto.descripcion}}</p>
                             </div>
                             <div class="col-4">
-                                <div id="item-proyecto-card-buttons">
+                                <div id="item-proyecto-card-buttons" *ngIf="userLogged|async as user">
                                     <button class="btn" id="btn-update-proyectos" data-bs-toggle="modal" data-bs-target="#updateProyectosModal" data-original-title="Update" (click)="onOpenModal('update', proyecto)">
                                         <i class="bi bi-pencil-fill text-hover"></i>
                                     </button>
@@ -33,9 +33,9 @@
         </div>
         <div *ngIf="proyectos?.length==0">
             <h5 class="text-white">¡No hay proyectos cargados para mostrar!</h5>
-            <p class="text-muted">Click aquí abajo para agregar nuevas entradas</p>
+            <p *ngIf="userLogged|async as user" class="text-muted">Click aquí abajo para agregar nuevas entradas</p>
         </div>
-        <app-add-button  id="btn-add-proyectos" data-bs-toggle="modal" data-bs-target="#addProyectosModal" (click)="onOpenModal('add')"></app-add-button>
+        <app-add-button *ngIf="userLogged|async as user" id="btn-add-proyectos" data-bs-toggle="modal" data-bs-target="#addProyectosModal" (click)="onOpenModal('add')"></app-add-button>
 
 
 

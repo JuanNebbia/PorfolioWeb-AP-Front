@@ -17,12 +17,14 @@
                                   <p class="main-text" id="experiencia-nivel">{{experiencia.cargo}}</p>
                                   <h5 class="card-title title-hover">{{experiencia.empresa}}</h5>
                                   <p class="main-text">{{experiencia.fechaInicio}} - {{experiencia.fechaFin}}<span *ngIf="!experiencia?.fechaFin">actualidad</span></p>
-                                  <button class="btn" id="btn-update-experiencia" data-bs-toggle="modal" data-bs-target="#updateExperienciaModal" data-original-title="Update" (click)="onOpenModal('update', experiencia)">
-                                      <i class="bi bi-pencil-fill text-hover"></i>
-                                  </button>
-                                  <button class="btn" id="btn-delete-experiencia" data-bs-toggle="modal" data-bs-target="#deleteExperienciaModal" data-original-title="Delete" (click)="onOpenModal('delete', experiencia)">
-                                      <i class="bi bi bi-trash3-fill text-hover"></i>
-                                  </button>
+                                  <div *ngIf="userLogged|async as user" class="edit-experience">
+                                      <button class="btn" id="btn-update-experiencia" data-bs-toggle="modal" data-bs-target="#updateExperienciaModal" data-original-title="Update" (click)="onOpenModal('update', experiencia)">
+                                          <i class="bi bi-pencil-fill text-hover"></i>
+                                      </button>
+                                      <button class="btn" id="btn-delete-experiencia" data-bs-toggle="modal" data-bs-target="#deleteExperienciaModal" data-original-title="Delete" (click)="onOpenModal('delete', experiencia)">
+                                          <i class="bi bi bi-trash3-fill text-hover"></i>
+                                      </button>
+                                  </div>
                               </div>
                           </div>
                       </div>
@@ -36,9 +38,9 @@
       </div>
       <div *ngIf="experiencias?.length==0">
           <h4 class="text-white">¡No hay experiencias cargadas para mostrar!</h4>
-          <p class="text-muted">Click aquí abajo para agregar nuevas entradas</p>
+          <p *ngIf="userLogged|async as user" class="text-muted">Click aquí abajo para agregar nuevas entradas</p>
       </div>
-      <app-add-button  id="btn-add-experiencia" data-bs-toggle="modal" data-bs-target="#addExperienciaModal" (click)="onOpenModal('add')"></app-add-button>
+      <app-add-button *ngIf="userLogged|async as user" id="btn-add-experiencia" data-bs-toggle="modal" data-bs-target="#addExperienciaModal" (click)="onOpenModal('add')"></app-add-button>
 
 
 

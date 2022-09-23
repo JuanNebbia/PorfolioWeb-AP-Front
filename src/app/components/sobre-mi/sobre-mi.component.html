@@ -3,16 +3,22 @@
   <div class="card-body">
     <h3 class="card-title title-hover">Sobre mi</h3>
     <p class="card-text main-text">{{informacion.descripcion}}</p>
-    <button *ngIf="informacion?.descripcion!==''" class="btn" id="btn-update-sobre-mi" data-bs-toggle="modal" data-bs-target="#updateSobreMiModal" data-original-title="Update" (click)="onOpenModal(informacion)">
-      <i class="bi bi-pencil-fill text-hover"></i>
-  </button>
-  </div>
-  <div *ngIf="informacion?.descripcion==''">
-    <h5 class="text-white">¡No hay una descripcion cargada para mostrar!</h5>
-    <p class="text-muted">Click aquí abajo para agregar una</p>
-    <app-add-button  id="btn-add-sobre-mi" data-bs-toggle="modal" data-bs-target="#updateSobreMiModal" (click)="onOpenModal(informacion)"></app-add-button>
-
-  </div>
+    <div class="edit-about" *ngIf="userLogged|async as user">
+      <button *ngIf="informacion?.descripcion!==''" 
+        class="btn" id="btn-update-sobre-mi" 
+        data-bs-toggle="modal" 
+        data-bs-target="#updateSobreMiModal" 
+        data-original-title="Update" 
+        (click)="onOpenModal(informacion)">
+          <i class="bi bi-pencil-fill text-hover"></i>
+      </button>
+      </div>
+      <div *ngIf="informacion?.descripcion==''">
+        <h5 class="text-white">¡No hay una descripcion cargada para mostrar!</h5>
+        <p class="text-muted">Click aquí abajo para agregar una</p>
+        <app-add-button  id="btn-add-sobre-mi" data-bs-toggle="modal" data-bs-target="#updateSobreMiModal" (click)="onOpenModal(informacion)"></app-add-button>
+      </div>
+    </div>
  
 </div>
 

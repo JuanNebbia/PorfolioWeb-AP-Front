@@ -7,9 +7,6 @@ a img {
     height: 5rem;
 }
 
-button{
-    background-color: #ccc;
-}
 
 .container-fluid{
     display: flex;
@@ -29,6 +26,11 @@ li a{
 
 li a:hover{
     background-color: transparent;
+}
+
+#btn-logout{
+    background-color: transparent;
+    border: none;
 }
 
 @media screen and (max-width: 1010px){

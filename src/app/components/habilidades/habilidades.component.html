@@ -21,7 +21,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-2">
+                        <div class="col-2 edit-skills" *ngIf="userLogged|async as user">
                             <button class="btn" id="btn-update-habilidades" data-bs-toggle="modal" data-bs-target="#updateHabilidadesModal" data-original-title="Update" (click)="onOpenModal('update', habilidad)">
                                 <i class="bi bi-pencil-fill text-hover"></i>
                             </button>
@@ -35,9 +35,9 @@
         </div>
         <div *ngIf="habilidades?.length==0">
             <h5 class="text-white">¡No hay habilidades cargadas para mostrar!</h5>
-            <p class="text-muted">Click aquí abajo para agregar nuevas entradas</p>
+            <p *ngIf="userLogged|async as user" class="text-muted">Click aquí abajo para agregar nuevas entradas</p>
         </div>
-        <app-add-button  id="btn-add-habilidades" data-bs-toggle="modal" data-bs-target="#addHabilidadesModal" (click)="onOpenModal('add')"></app-add-button>
+        <app-add-button *ngIf="userLogged|async as user" id="btn-add-habilidades" data-bs-toggle="modal" data-bs-target="#addHabilidadesModal" (click)="onOpenModal('add')"></app-add-button>
 
         <!--Add Modal -->
         <div class="modal fade" id="addHabilidadesModal" tabindex="-1" aria-labelledby="addHabilidadesModal" aria-hidden="true">

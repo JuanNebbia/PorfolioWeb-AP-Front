@@ -16,12 +16,14 @@
                                     <h5 class="card-title title-hover">{{educacion.institucion}}</h5>
                                     <p class="main-text">{{educacion.titulo}}</p>
                                     <p class="main-text">{{educacion.fechaInicio}} - {{educacion.fechaFin}} <span *ngIf="!educacion?.fechaFin">actualidad</span></p>
-                                    <button class="btn" id="btn-update-educacion" data-bs-toggle="modal" data-bs-target="#updateEducacionModal" data-original-title="Update" (click)="onOpenModal('update', educacion)">
-                                        <i class="bi bi-pencil-fill text-hover"></i>
-                                    </button>
-                                    <button class="btn" id="btn-delete-educacion" data-bs-toggle="modal" data-bs-target="#deleteEducacionModal" data-original-title="Delete" (click)="onOpenModal('delete', educacion)">
-                                        <i class="bi bi bi-trash3-fill text-hover"></i>
-                                    </button>
+                                    <div class="edit-education" *ngIf="userLogged|async as user">
+                                        <button class="btn" id="btn-update-educacion" data-bs-toggle="modal" data-bs-target="#updateEducacionModal" data-original-title="Update" (click)="onOpenModal('update', educacion)">
+                                            <i class="bi bi-pencil-fill text-hover"></i>
+                                        </button>
+                                        <button class="btn" id="btn-delete-educacion" data-bs-toggle="modal" data-bs-target="#deleteEducacionModal" data-original-title="Delete" (click)="onOpenModal('delete', educacion)">
+                                            <i class="bi bi bi-trash3-fill text-hover"></i>
+                                        </button>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -36,9 +38,9 @@
         </div>
         <div *ngIf="educaciones?.length==0">
             <h4 class="text-white">¡No hay estudios cargados para mostrar!</h4>
-            <p class="text-muted">Click aquí abajo para agregar nuevas entradas</p>
+            <p *ngIf="userLogged|async as user" class="text-muted">Click aquí abajo para agregar nuevas entradas</p>
         </div>
-        <app-add-button  id="btn-add-educacion" data-bs-toggle="modal" data-bs-target="#addEducacionModal" (click)="onOpenModal('add')"></app-add-button>
+        <app-add-button *ngIf="userLogged|async as user" id="btn-add-educacion" data-bs-toggle="modal" data-bs-target="#addEducacionModal" (click)="onOpenModal('add')"></app-add-button>
 
 
         <!--Add Modal -->
