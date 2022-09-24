@@ -1,4 +1,4 @@
-#educacion{
+#education{
     border: none;
     border-radius: 0;
     padding-top: 8rem;
@@ -25,7 +25,13 @@
     text-align: left;
 }
 
-#educacion-nivel{
+#dot-icon{
+    height: 15rem;
+    margin-left: auto;
+    float: right;
+}
+
+#education-level{
     font-size: 0.85rem;
     font-weight: 200;
     margin-bottom: 0.5rem
@@ -45,22 +51,14 @@
     font-size: 0.85rem;
 }
 
-#punto{
-    height: 15rem;
-    margin-left: auto;
-    float: right;
-}
-
-
-.educacion-img-container{
+.education-img-container{
     height: 7rem;
     width: 7rem;
     align-self: center;
-    border-radius: 5px;
     margin-right: auto;
 }
 
-#img-educacion{
+#img-education{
     height: 100%;
     width: 100%;
     object-fit: contain;

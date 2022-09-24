@@ -1,5 +1,5 @@
 <app-loader *ngIf='loading'></app-loader>
-<header *ngIf="informacion && !loading">
+<header *ngIf="informacion && !loading" id="header">
     <div class="card mb-3" id="header-card">
       <div class="container-fluid px-0" id="banner-container">
         <img [src]="(informacion.imgBanner)" class="card-img mx-0" alt="imagen de fondo" id="banner">

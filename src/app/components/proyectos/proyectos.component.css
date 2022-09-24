@@ -1,27 +1,41 @@
-#proyectos{
-    padding: 5rem;
-    background: linear-gradient(0deg, rgba(89,55,142,1) 0%, rgba(47,30,74,1) 100%);
+#proyects{
+    padding: 0 5rem;
+    background: linear-gradient(0deg, #59378e 0%, #2f1e4a 100%);
     border: none;
     border-radius: 0;
-
 }
 
-h3{
+.proyects-title{
     margin-bottom: 5rem;
     font-size: 2.5rem;
 }
 
-
-
-.proyectos-container{
+.proyects-container{
     width: 20rem;
     display: inline-block;
     margin: 1rem;
 }
 
+#item-proyect-card{
+    overflow: hidden;
+    height: fit-content;
+    width: 100%;
+    border-radius: 10px;
+    display: inline-block;
+}
 
+.card-body{
+    padding: 0 0 0 0.7rem;
+}
 
-#proyecto-banner{
+#proyects-img-container{
+    margin: 0.7rem;
+    border-radius: 10px;
+    overflow: hidden;
+    height: 20rem;
+}
+
+#proyect-banner{
     filter: brightness(0.7) grayscale(0.5);
     height: 100%;
     width: 100%;
@@ -29,9 +43,32 @@ h3{
     transition: transform 1s, filter 1s;
 }
 
-#proyecto-banner:hover{
+#proyect-banner:hover{
     filter: brightness(1) grayscale(0);
     transform: scale(1.2);
+}
+
+#proyect-title{
+    text-align: left;
+    font-size: 2rem;
+    margin: 0;
+}
+
+#proyect-description{
+    text-align: left;
+    font-size: 0.7rem;
+    height: 3rem;
+}
+
+.edit-proyects{
+    align-self: center;
+    margin-left: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+#btn-update-proyects, #btn-delete-proyects{
+    padding: 0.5rem;
 }
 
 @media screen and (max-width: 768px){
@@ -44,55 +81,4 @@ h3{
         filter: brightness(1) grayscale(0);
         object-fit: cover;
     }
-}
-
-#item-proyecto-card{
-    overflow: hidden;
-    height: fit-content;
-    width: 100%;
-    border-radius: 10px;
-    display: inline-block;
-}
-
-
-#btn-update-proyectos, #btn-delete-proyectos{
-    padding: 0.5rem;
-}
-
-#proyectos-img-container{
-    margin: 0.7rem;
-    border-radius: 10px;
-    overflow: hidden;
-    height: 20rem;
-}
-
-.edit-proyects{
-    align-self: center;
-    margin-left: auto;
-    display: flex;
-    flex-direction: column;
-}
-
-.card-body{
-    padding: 0 0 0 0.7rem;
-}
-
-#proyecto-titulo{
-    text-align: left;
-    font-size: 2rem;
-    margin: 0;
-}
-
-#proyecto-descripcion{
-    text-align: left;
-    font-size: 0.7rem;
-    height: 3rem;
-}
-
-svg{
-    background-color: rgba(89,55,142,1);
-}
-
-.col-4{
-    display: flex;
 }

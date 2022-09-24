@@ -1,17 +1,17 @@
 <app-loader *ngIf='loading'></app-loader>
-<div *ngIf="educaciones && !loading" class="card text-center background-color" id="educacion">
+<div *ngIf="educaciones && !loading" class="card text-center background-color" id="education">
     <div class="card-body" id="main-card-body">
         <h3 class="card-title title-hover education-title">Educación</h3>
         <div class="main-container">
             <div class="educaciones-container" *ngFor="let educacion of educaciones">
                 <div class="row">
                     <div class="col-3">
-                        <div><img src="assets/img/punto1.svg" alt="" id="punto"></div>
+                        <div><img src="assets/img/punto1.svg" alt="" id="dot-icon"></div>
                     </div>
                     <div class="col-4">
                         <div class="container-fluid" id="education-item-card">
                             <div class="row g-0 education-row">
-                                <p class="main-text" id="educacion-nivel">{{educacion.nivel}}</p>
+                                <p class="main-text" id="education-level">{{educacion.nivel}}</p>
                                 <h5 class="card-title main-title education-item-title">{{educacion.titulo}}</h5>
                                 <p class="main-text education-institution">{{educacion.institucion}}</p>
                                 <p class="main-text education-item-date">{{educacion.fechaInicio}} - {{educacion.fechaFin}} <span *ngIf="!educacion?.fechaFin">actualidad</span></p>
@@ -27,15 +27,15 @@
                         </div>
                     </div>
                     <div class="col-5">
-                        <div class="educacion-img-container">
-                            <img *ngIf="educacion.imgEducacion" src="{{educacion.imgEducacion}}" id="img-educacion" alt="">
+                        <div class="education-img-container">
+                            <img *ngIf="educacion.imgEducacion" src="{{educacion.imgEducacion}}" id="img-education" alt="">
                         </div>
                     </div>
                 </div>
             </div>
         </div>
         <div *ngIf="educaciones?.length==0">
-            <h4 class="text-white">¡No hay estudios cargados para mostrar!</h4>
+            <h4 class="empty-section-title">¡No hay estudios para mostrar aun!</h4>
             <p *ngIf="userLogged|async as user" class="text-muted">Click aquí abajo para agregar nuevas entradas</p>
         </div>
         <app-add-button *ngIf="userLogged|async as user" id="btn-add-educacion" data-bs-toggle="modal" data-bs-target="#addEducacionModal" (click)="onOpenModal('add')"></app-add-button>
@@ -53,11 +53,11 @@
                     <form #addForm="ngForm" (ngSubmit)="onAddEducacion(addForm)">
                         <div class="mb-3">
                             <label for="exampleInputEmail1" class="form-label">Nivel de Estudio</label>
-                            <input ngModel name="nivel" type="text" class="form-control" id="educacion-form-nivel" placeholder="por ej. universitario" required>
+                            <input ngModel name="nivel" type="text" class="form-control" id="educacion-form-nivel" required>
                           </div>
                           <div class="mb-3">
                             <label for="exampleInputPassword1" class="form-label">Institución</label>
-                            <input ngModel name="institucion" type="text" class="form-control" id="educacion-form-institucion" placeholder="por ej. UBA" required>
+                            <input ngModel name="institucion" type="text" class="form-control" id="educacion-form-institucion" required>
                           </div>
                           <div class="mb-3">
                             <label for="exampleInputPassword1" class="form-label">Titulo</label>

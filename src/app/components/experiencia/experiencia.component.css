@@ -1,19 +1,19 @@
-#experiencia{
+#experience{
     border: none;
     border-radius: 0;
-    padding: 8% 0;
+    padding-top: 8rem;
 }
 
-h3{
-    margin-bottom: 5rem;
-    font-size: 2.5rem;
+.experience-title{
+    margin-bottom: 1.5rem;
+    font-size: 2.3rem;
 }
 
 #inner-card-body{
     padding: 0;
 }
 
-#education-item-card{
+#experience-item-card{
     align-self: center;
     width: 50rem;
     height: fit-content;
@@ -21,49 +21,48 @@ h3{
     margin: 1rem;
 }
 
-#experiencia-item-titles{
+.experience-row{
     text-align: right;
 }
 
-#experiencia-nivel{
-    margin-right: auto;
-}
-
-h5{
-    display: inline-block;
-    font-size: 2rem;
-}
-
-#punto{
-    height: 22rem;
+#dot-icon{
+    height: 15rem;
     margin-left: auto;
     float: left;
 }
 
+#experience-level{
+    font-size: 0.85rem;
+    font-weight: 200;
+    margin-bottom: 0.5rem
+}
 
-.experiencia-img-container{
-    height: 5rem;
-    width: 5rem;
+.experience-item-title{
+    display: inline-block;
+    font-size: 1.5rem;
+}
+
+.experience-item-date{
+    font-size: 0.85rem;
+}
+
+.experience-img-container{
+    height: 7rem;
+    width: 7rem;
     align-self: center;
-    border-radius: 5px;
     margin-left: auto;
 }
 
-#img-experiencia{
+#img-experience{
     height: 100%;
     width: 100%;
     object-fit: contain;
 }
 
-
 .col-5, .col-4{
     display: flex;
 }
 
-.col-4{
-    padding-top: 2%;
-}
-
-.no-experiences{
-    font-size: 1rem;
+.edit-experience{
+    margin-left: auto;
 }
