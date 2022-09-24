@@ -31,13 +31,12 @@
                   </div>
                   <div class="col-3">
                     <div><img src="assets/img/punto1.svg" alt="" id="punto"></div>
-                  </div>
-                  
+                  </div>  
               </div>
           </div>
       </div>
       <div *ngIf="experiencias?.length==0">
-          <h4 class="text-white">¡No hay experiencias cargadas para mostrar!</h4>
+          <h4 class="text-white no-experiences">¡No hay experiencias cargadas para mostrar aun!</h4>
           <p *ngIf="userLogged|async as user" class="text-muted">Click aquí abajo para agregar nuevas entradas</p>
       </div>
       <app-add-button *ngIf="userLogged|async as user" id="btn-add-experiencia" data-bs-toggle="modal" data-bs-target="#addExperienciaModal" (click)="onOpenModal('add')"></app-add-button>

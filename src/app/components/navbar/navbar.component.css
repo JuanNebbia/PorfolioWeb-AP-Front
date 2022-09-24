@@ -1,31 +1,27 @@
 .navbar{
     margin-top: -1.3rem;
     background-color: #09061cdd;
+    position: sticky;
 }
 
-a img {
+.ap-icon{
     height: 5rem;
 }
 
-
-.container-fluid{
+.navbar-container{
     display: flex;
     justify-content: space-evenly;
 }
 
-ul{
+.navbar-list{
     margin: auto;
 }
 
-li a{
+.nav-item-link{
     text-decoration: none;
     margin-right: 2rem;
     font-size: 1rem;
-}
-
-
-li a:hover{
-    background-color: transparent;
+    font-weight: 500;
 }
 
 #btn-logout{
@@ -34,9 +30,8 @@ li a:hover{
 }
 
 @media screen and (max-width: 1010px){
-    li a{
+    .nav-item-link{
         margin-right: 1rem;
     }
-    
 }
 

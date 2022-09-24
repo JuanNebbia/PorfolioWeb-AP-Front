@@ -1,35 +1,38 @@
 <app-loader *ngIf='loading'></app-loader>
 <div *ngIf="habilidades && !loading" class="card text-center" id="habilidades">
     <div *ngIf="habilidades && !loading" class="card-body">
-        <h3 class="card-title title-hover">Habilidades</h3>
-        <div class="main-container">
-            <div class="habilidades-container" *ngFor="let habilidad of habilidades">
-                <h6 id="titulo-habilidad" [style]="{'color': habilidad.color}">{{habilidad.tecnologia}}</h6>
-                <p id="habilidad-descripcion" class="text-white">{{habilidad.descripcion}}</p>
-                <div class="container-fluid">
-                    <div class="row">
-                        <div class="col-2" id="tech-logo-container">
-                            <img src="{{habilidad.imgHabilidad}}" alt="" id="logo-habilidad">
-                        </div>
-                        <div class="col-8" id="bar-container">
-                            <div class="progress">
-                                <div 
-                                class="progress-bar progress-bar-striped progress-bar-animated" 
-                                id="barra-tecnologia" 
-                                role="progressbar"
-                                [style]="{'width': habilidad.nivel + '%', 'background-color': habilidad.color}">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-2 edit-skills" *ngIf="userLogged|async as user">
-                            <button class="btn" id="btn-update-habilidades" data-bs-toggle="modal" data-bs-target="#updateHabilidadesModal" data-original-title="Update" (click)="onOpenModal('update', habilidad)">
-                                <i class="bi bi-pencil-fill text-hover"></i>
-                            </button>
-                            <button class="btn" id="btn-delete-habilidades" data-bs-toggle="modal" data-bs-target="#deleteHabilidadesModal" data-original-title="Delete" (click)="onOpenModal('delete', habilidad)">
-                                <i class="bi bi bi-trash3-fill text-hover"></i>
-                            </button>
+        <h3 class="card-title title-hover skills-title">Habilidades</h3>
+        <div class="skills-item-row row">
+            <div class="skills-container col-md-6" *ngFor="let habilidad of habilidades">
+                <h6 class="skills-item-title" [style]="{'color': habilidad.color}">{{habilidad.tecnologia}}</h6>
+                <i *ngIf="habilidad.descripcion"
+                    class="bi bi-info-circle-fill icon-hover"
+                    mat-raised-button
+                    matTooltip="{{habilidad.descripcion}}"
+                    matTooltipClass="description-tooltip"
+                    matTooltipPosition="right">
+                </i>
+                <!-- <p class="text-white skills-description">{{habilidad.descripcion}}</p> -->
+                <div class="progress-bar-row">
+                    <div class="tech-logo-container">
+                        <img src="{{habilidad.imgHabilidad}}" alt="" class="logo-habilidad">
+                    </div>
+                    <div class="progress">
+                        <div 
+                            class="progress-bar progress-bar-striped progress-bar-animated" 
+                            id="barra-tecnologia" 
+                            role="progressbar"
+                            [style]="{'width': habilidad.nivel + '%', 'background-color': habilidad.color}">
                         </div>
                     </div>
+                </div>
+                <div class="edit-skills edit-btn-container" *ngIf="userLogged|async as user">
+                    <button class="btn" id="btn-update-habilidades" data-bs-toggle="modal" data-bs-target="#updateHabilidadesModal" data-original-title="Update" (click)="onOpenModal('update', habilidad)">
+                        <i class="bi bi-pencil-fill icon-hover"></i>
+                    </button>
+                    <button class="btn" id="btn-delete-habilidades" data-bs-toggle="modal" data-bs-target="#deleteHabilidadesModal" data-original-title="Delete" (click)="onOpenModal('delete', habilidad)">
+                        <i class="bi bi bi-trash3-fill icon-hover"></i>
+                    </button>
                 </div>
             </div>
         </div>
@@ -51,11 +54,11 @@
                     <form #addForm="ngForm" (ngSubmit)="onAddHabilidades(addForm)">
                         <div class="mb-3">
                             <label for="exampleInputEmail1" class="form-label">Tecnología</label>
-                            <input ngModel name="tecnologia" type="text" class="form-control" placeholder="por ej. Angular" required>
+                            <input ngModel name="tecnologia" type="text" class="form-control" required>
                         </div>
                         <div class="mb-3">
                             <label for="exampleInputEmail1" class="form-label">Descripción</label>
-                            <input ngModel name="descripcion" type="text" class="form-control" placeholder="Describa su experiencia y habilidad" required>
+                            <textarea ngModel name="descripcion" type="text" class="form-control" required></textarea>
                         </div>
                           <div class="mb-3">
                             <label for="exampleInputPassword1" class="form-label">Nivel</label>
@@ -95,11 +98,11 @@
                             </div>
                             <div class="form-group mb-3">
                                 <label for="exampleInputEmail1" class="form-label">Tecnología</label>
-                                <input ngModel="{{updateHabilidades?.tecnologia}}" name="tecnologia" type="text" class="form-control" id="nivel" placeholder="por ej. universitario" required>
+                                <input ngModel="{{updateHabilidades?.tecnologia}}" name="tecnologia" type="text" class="form-control" id="nivel" required>
                             </div>
                             <div class="mb-3">
                                 <label for="exampleInputEmail1" class="form-label">Descripción</label>
-                                <input ngModel name="descripcion" type="text" class="form-control" placeholder="por ej. universitario" required>
+                                <textarea ngModel="{{updateHabilidades?.descripcion}}" name="descripcion" type="text" class="form-control" required></textarea>
                             </div>
                             <div class="mb-3">
                                 <label for="exampleInputPassword1" class="form-label">Nivel</label>
@@ -111,10 +114,10 @@
                             </div>
                             <div class="mb-3">
                                 <label for="exampleInputPassword1" class="form-label">Color</label>
-                                <input ngModel name="color" type="color" class="form-control" required>
+                                <input ngModel="{{updateHabilidades?.color}}" name="color" type="color" class="form-control" required>
                               </div>
                             <div class="modal-footer">
-                                <button class="btn btn-primary" (click)="onUpdateHabilidades(updateForm.value)">Guardar cambios</button>
+                                <button class="btn btn-primary" (click)="onUpdateHabilidades(updateForm.value)" data-bs-dismiss="modal">Guardar cambios</button>
                             </div>
                         </form>
                     </div>

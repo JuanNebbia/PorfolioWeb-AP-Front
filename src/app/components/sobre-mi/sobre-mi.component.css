@@ -3,12 +3,12 @@
     margin-top: -1rem;
     border: none;
     border-radius: 0;
-    padding-top: 1rem;
+    padding-top: 5rem;
 }
 
-h3{
-    margin-bottom: 2rem;
-    font-size: 2.5rem;
+.about-title{
+    margin-bottom: 1.5rem;
+    font-size: 2.3rem;
     display: inline-block;
 }
 
@@ -16,6 +16,15 @@ h3{
     padding: 0 25%;
 }
 
+.edit-about{
+    margin: auto;
+}
+
 #editar-descripcion-input{
     height: 4rem;
+}
+
+.about-text{
+    text-align: justify;
+    font-weight: 400;
 }

@@ -17,12 +17,12 @@
                                 <p class="text-white" id="proyecto-descripcion">{{proyecto.descripcion}}</p>
                             </div>
                             <div class="col-4">
-                                <div id="item-proyecto-card-buttons" *ngIf="userLogged|async as user">
+                                <div class="edit-proyects edit-btn-container" *ngIf="userLogged|async as user">
                                     <button class="btn" id="btn-update-proyectos" data-bs-toggle="modal" data-bs-target="#updateProyectosModal" data-original-title="Update" (click)="onOpenModal('update', proyecto)">
-                                        <i class="bi bi-pencil-fill text-hover"></i>
+                                        <i class="bi bi-pencil-fill icon-hover"></i>
                                     </button>
                                     <button class="btn" id="btn-delete-proyectos" data-bs-toggle="modal" data-bs-target="#deleteProyectosModal" data-original-title="Delete" (click)="onOpenModal('delete', proyecto)">
-                                        <i class="bi bi bi-trash3-fill text-hover"></i>
+                                        <i class="bi bi bi-trash3-fill icon-hover"></i>
                                     </button>
                                 </div>
                             </div>

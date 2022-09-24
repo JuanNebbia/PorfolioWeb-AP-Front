@@ -1,7 +1,7 @@
 <app-loader *ngIf='loading'></app-loader>
 <div *ngIf="educaciones && !loading" class="card text-center background-color" id="educacion">
     <div class="card-body" id="main-card-body">
-        <h3 class="card-title title-hover">Educación</h3>
+        <h3 class="card-title title-hover education-title">Educación</h3>
         <div class="main-container">
             <div class="educaciones-container" *ngFor="let educacion of educaciones">
                 <div class="row">
@@ -10,20 +10,18 @@
                     </div>
                     <div class="col-4">
                         <div class="container-fluid" id="education-item-card">
-                            <div class="row g-0">
-                                <div id="education-item-titles">
-                                    <p class="main-text" id="educacion-nivel">{{educacion.nivel}}</p>
-                                    <h5 class="card-title title-hover">{{educacion.institucion}}</h5>
-                                    <p class="main-text">{{educacion.titulo}}</p>
-                                    <p class="main-text">{{educacion.fechaInicio}} - {{educacion.fechaFin}} <span *ngIf="!educacion?.fechaFin">actualidad</span></p>
-                                    <div class="edit-education" *ngIf="userLogged|async as user">
-                                        <button class="btn" id="btn-update-educacion" data-bs-toggle="modal" data-bs-target="#updateEducacionModal" data-original-title="Update" (click)="onOpenModal('update', educacion)">
-                                            <i class="bi bi-pencil-fill text-hover"></i>
-                                        </button>
-                                        <button class="btn" id="btn-delete-educacion" data-bs-toggle="modal" data-bs-target="#deleteEducacionModal" data-original-title="Delete" (click)="onOpenModal('delete', educacion)">
-                                            <i class="bi bi bi-trash3-fill text-hover"></i>
-                                        </button>
-                                    </div>
+                            <div class="row g-0 education-row">
+                                <p class="main-text" id="educacion-nivel">{{educacion.nivel}}</p>
+                                <h5 class="card-title main-title education-item-title">{{educacion.titulo}}</h5>
+                                <p class="main-text education-institution">{{educacion.institucion}}</p>
+                                <p class="main-text education-item-date">{{educacion.fechaInicio}} - {{educacion.fechaFin}} <span *ngIf="!educacion?.fechaFin">actualidad</span></p>
+                                <div class="edit-education edit-btn-container" *ngIf="userLogged|async as user">
+                                    <button class="btn" id="btn-update-educacion" data-bs-toggle="modal" data-bs-target="#updateEducacionModal" data-original-title="Update" (click)="onOpenModal('update', educacion)">
+                                        <i class="bi bi-pencil-fill icon-hover"></i>
+                                    </button>
+                                    <button class="btn" id="btn-delete-educacion" data-bs-toggle="modal" data-bs-target="#deleteEducacionModal" data-original-title="Delete" (click)="onOpenModal('delete', educacion)">
+                                        <i class="bi bi bi-trash3-fill icon-hover"></i>
+                                    </button>
                                 </div>
                             </div>
                         </div>

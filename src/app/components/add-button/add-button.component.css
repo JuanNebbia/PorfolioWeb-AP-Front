@@ -1,11 +1,11 @@
 button{
     margin: 3rem 0 5rem;
     width: 6rem;
-    background-color: rgb(38, 145, 130);
+    background-color: #269182;
 }
 
 button:hover{
-    background-color: rgb(66, 228, 206);
+    background-color: #42e4ce;
 }
 
 .bi-plus-lg{

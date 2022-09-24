@@ -1,16 +1,16 @@
 <app-loader *ngIf='loading'></app-loader>
 <div *ngIf="informacion && !loading" class="card text-center" id="sobre-mi">
   <div class="card-body">
-    <h3 class="card-title title-hover">Sobre mi</h3>
-    <p class="card-text main-text">{{informacion.descripcion}}</p>
-    <div class="edit-about" *ngIf="userLogged|async as user">
+    <h3 class="card-title title-hover about-title">Sobre mi</h3>
+    <p class="card-text main-text about-text">{{informacion.descripcion}}</p>
+    <div class="edit-about edit-btn-container" *ngIf="userLogged|async as user">
       <button *ngIf="informacion?.descripcion!==''" 
         class="btn" id="btn-update-sobre-mi" 
         data-bs-toggle="modal" 
         data-bs-target="#updateSobreMiModal" 
         data-original-title="Update" 
         (click)="onOpenModal(informacion)">
-          <i class="bi bi-pencil-fill text-hover"></i>
+          <i class="bi bi-pencil-fill icon-hover"></i>
       </button>
       </div>
       <div *ngIf="informacion?.descripcion==''">

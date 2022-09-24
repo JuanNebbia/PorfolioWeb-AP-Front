@@ -9,26 +9,38 @@ html {
     font-family: 'Roboto', sans-serif;
   }
 
-  .title-hover{
-    color: #a728b0;
+  .main-title{
+    color: #bb3cc4;
     text-shadow: 0px 0px 4px #000;
   }
 
+  .title-hover{
+    color: #c748d0;
+  }
+
   .title-hover:hover{
-    color: #f40be9;
+    color: #f42bf9;
   }
 
   .main-text{
-    color: #cbc3d0
+    color: #dbd3e0
   }
 
-  .text-hover{
-    color: #877f9d;
+  .icon-hover{
+    color: #ccc;
   }
 
-  .text-hover:hover{
-    color: #cbc3d0;
+  .icon-hover:hover{
+    color: #fff;
   }
+
+  .edit-btn-container{
+    display: flex;
+    justify-content: center;
+    background-color: #067162;
+    width: fit-content;
+    border-radius: 0.7rem;
+}
 
   .background-color{
     background-color: #09061c;
@@ -53,3 +65,5 @@ html {
   body::-webkit-scrollbar-thumb:hover {
     background-color: #666;
   }
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

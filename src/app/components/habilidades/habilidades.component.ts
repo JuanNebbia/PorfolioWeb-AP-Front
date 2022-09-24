@@ -1,5 +1,5 @@
 import { HttpErrorResponse } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation} from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Habilidades } from 'src/app/models/habilidades';
 import { HabilidadesService } from 'src/app/services/habilidades.service';
@@ -9,7 +9,8 @@ import { AuthenticationService } from 'src/app/services/authentication.service';
 @Component({
   selector: 'app-habilidades',
   templateUrl: './habilidades.component.html',
-  styleUrls: ['./habilidades.component.css']
+  styleUrls: ['./habilidades.component.css'],
+  encapsulation: ViewEncapsulation.None
 })
 
 export class HabilidadesComponent implements OnInit {
