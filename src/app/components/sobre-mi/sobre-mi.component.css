@@ -1,19 +1,19 @@
-#sobre-mi{
+#about{
     background-color: #09061c;
-    margin-top: -1rem;
+    margin-top: -1.5rem;
     border: none;
     border-radius: 0;
-    padding-top: 5rem;
+    padding: 5rem ;
 }
 
 .about-title{
     margin-bottom: 1.5rem;
-    font-size: 2.3rem;
-    display: inline-block;
+    font-size: 2.5rem;
 }
 
-.card-body{
-    padding: 0 25%;
+.about-body{
+    max-width: 45rem;
+    margin: auto;
 }
 
 .edit-about{
@@ -27,4 +27,23 @@
 .about-text{
     text-align: justify;
     font-weight: 400;
+    font-size: 1rem;
 }
+
+@media screen and (max-width: 768px){
+    #about{
+        padding: 1rem;
+    }
+
+    .about-title{
+        margin: 2.5rem;
+        font-size: 2rem;
+    }
+
+    .about-text{
+        text-align: justify;
+        font-weight: 400;
+        font-size: 0.8rem;
+    }
+    
+ }

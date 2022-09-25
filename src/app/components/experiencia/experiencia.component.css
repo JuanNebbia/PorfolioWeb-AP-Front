@@ -1,21 +1,27 @@
 #experience{
     border: none;
     border-radius: 0;
-    padding-top: 8rem;
+    padding: 5rem 0;
+    margin-top: -1rem;
 }
 
 .experience-title{
     margin-bottom: 1.5rem;
     font-size: 2.3rem;
+    text-align: center;
 }
 
 #inner-card-body{
     padding: 0;
 }
 
+.experience-info-col{
+    display: flex;
+    align-items: center;
+}
+
 #experience-item-card{
     align-self: center;
-    width: 50rem;
     height: fit-content;
     padding: 0;
     margin: 1rem;
@@ -23,6 +29,14 @@
 
 .experience-row{
     text-align: right;
+}
+
+.dot-container{
+    height: 15rem;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: left;
 }
 
 #dot-icon{
@@ -66,3 +80,46 @@
 .edit-experience{
     margin-left: auto;
 }
+
+.empty-section-container{
+    display: flex;
+    flex-direction: column;
+    margin-top: -1rem;
+    justify-content: center;
+}
+
+.empty-section-title, .empty-section-text{
+    text-align: center;
+}
+
+#btn-add-experiencia{
+    margin: auto;
+}
+
+@media screen and (max-width: 768px){
+    .experience-img-col{
+        display: none;
+    }
+
+    .experience-title{
+        margin: 3rem;
+        font-size: 2rem;
+    }
+
+    .dot-container{
+        height: 12rem;
+    }
+    
+    #dot-icon{
+        height: 15rem;
+    }
+
+    .experience-item-title{
+        display: inline-block;
+        font-size: 1.2rem;
+    }
+
+    .experience-item-date{
+        font-size: 0.7rem;
+    }
+ }

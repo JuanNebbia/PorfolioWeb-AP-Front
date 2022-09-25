@@ -11,6 +11,11 @@
 .navbar-container{
     display: flex;
     justify-content: space-evenly;
+    background-color: #09061cdd;
+}
+
+.navbar-expand-lg{
+    padding:0 ;
 }
 
 .navbar-list{
@@ -29,9 +34,25 @@
     border: none;
 }
 
+.navbar-toggler{
+    border: 1px solid #f42bf9;
+}
+
+.navbar-toggler-icon{
+    color: #f42bf9;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
 @media screen and (max-width: 1010px){
     .nav-item-link{
         margin-right: 1rem;
+    }
+
+    .nav-item{
+        margin: 0.4rem auto;
     }
 }
 

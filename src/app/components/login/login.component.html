@@ -1,7 +1,7 @@
 <div class="container-fluid">
-    <div class="card text-center">
+    <div class="card text-center login-card">
         <div>
-            <h1 class="title-hover">Iniciar Sesión</h1>
+            <h2 class="title-hover">Iniciar Sesión</h2>
         </div>
         <div class="card-body p-4">
             <form #loginForm='ngForm' (ngSubmit)="login()">
@@ -11,7 +11,6 @@
                     class="form-control" 
                     [(ngModel)]="usuario.email" 
                     name="email"
-                    placeholder="Ingrese el Email" 
                     required>
                 <label>Contraseña</label>
                 <input 
@@ -19,15 +18,14 @@
                     class="form-control" 
                     [(ngModel)]="usuario.password" 
                     name="password"
-                    placeholder="Ingrese la contraseña" 
                     required>
                 <button type="submit" class="btn btn-primary">Ingresar</button>
             </form>
         </div>
         <div class="ventana-ingreso" *ngIf="userLogged|async as user">
             <p class="title-hover">Bienvenido {{user.email}}</p>
-            <button class="btn btn-success"><a href="/porfolio">Acceder al Porfolio</a></button>
-            <button class="btn btn-danger" (click)="logout()">Salir</button>
+            <button class="btn btn-success"><a href="/porfolio" class="link-to-main">Acceder al Porfolio</a></button>
+            <button class="btn btn-danger text-white" (click)="logout()">Salir</button>
         </div> 
     </div>   
 </div>

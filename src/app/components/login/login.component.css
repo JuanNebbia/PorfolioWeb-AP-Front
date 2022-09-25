@@ -1,13 +1,13 @@
 .container-fluid{
     background: linear-gradient(0deg, rgba(47,30,74,1) 0%, rgba(9,6,28,1) 100%);
     width: 100vw;
-    height: 100vh;
     display: flex;
     justify-content: center;
     align-content: center;
+    padding-top: 5rem;
 }
 
-.card{
+.login-card{
     background-color: transparent;
     width: 50%;
     height: fit-content;
@@ -17,14 +17,11 @@
     border: none;
 }
 
-a{
-    text-decoration: none;
-    color: black;
-}
-
-input{
+.form-control{
     margin-bottom: 2rem;
 }
+
+
 
 .ventana-ingreso{
     width: 100%;
@@ -38,7 +35,11 @@ input{
     color: #000;
     display: block;
     margin: 0.5rem auto;
-    width: 30%;
+}
+
+.link-to-main{
+    color: #fff;
+    text-decoration: none;
 }
 
 .ventana-ingreso p{
@@ -49,3 +50,9 @@ label{
     margin-bottom: 0.4rem;
     color: #fff;
 }
+
+@media screen and (max-width: 768px){
+    .login-card{
+        width: 90%;
+    }
+ }

@@ -1,53 +1,53 @@
 <app-loader *ngIf='loading'></app-loader>
-<div *ngIf="informacion && !loading" class="card text-center background-color" id="contacto">
-    <div class="card-body" id="main-card-body">
-        <h3 class="card-title title-hover">Contacto</h3>
-        <div class="row">
+<div *ngIf="informacion && !loading" class="card text-center background-color" id="contact">
+    <div class="card-body contact-body" id="main-card-body">
+        <h3 class="card-title title-hover contact-title">Contacto</h3>
+        <div class="row contact-row">
             <div class="col-4 contact-item-container" *ngIf="informacion?.locacion">
-                <a [href]="'https://www.google.com/maps/search/' + informacion.locacion" target="_blank">
+                <a [href]="'https://www.google.com/maps/search/' + informacion.locacion" target="_blank" class="contact-link">
                     <div class="logo-container">
-                        <i class="bi bi-geo-alt"></i>
+                        <i class="bi bi-geo-alt contact-icon"></i>
                     </div>
                 </a>
                 <p class="contact-text">{{informacion.locacion}}</p>
             </div>
             <div class="col-4 contact-item-container" *ngIf="informacion?.email">
-                <a [href]="'https://mail.google.com/mail/?view=cm&fs=1&to='+ informacion.email" target="_blank">
+                <a [href]="'https://mail.google.com/mail/?view=cm&fs=1&to='+ informacion.email" target="_blank" class="contact-link">
                     <div class="logo-container">
-                        <i class="bi bi-envelope"></i>
+                        <i class="bi bi-envelope contact-icon"></i>
                     </div>
                 </a>
                 <p class="contact-text">{{informacion.email}}</p>
             </div>
             <div class="col-4 contact-item-container" *ngIf="informacion?.telefono">
-                <a [href]="'https://wa.me/' + informacion.telefono" target="_blank">
+                <a [href]="'https://wa.me/' + informacion.telefono" target="_blank" class="contact-link">
                     <div class="logo-container">
-                        <i class="bi bi-whatsapp"></i>
+                        <i class="bi bi-whatsapp contact-icon"></i>
                     </div>
                 </a>
                 <p class="contact-text">{{informacion.telefono}}</p>
             </div>
             <div class="col-4 contact-item-container" *ngIf="informacion?.facebook">
-                <a [href]="'https://facebook.com/' + informacion.facebook" target="_blank">
+                <a [href]="'https://facebook.com/' + informacion.facebook" target="_blank" class="contact-link">
                     <div class="logo-container">
-                        <i class="bi bi-facebook"></i>
+                        <i class="bi bi-facebook contact-icon"></i>
 
                     </div>
                 </a>
                 <p class="contact-text">{{informacion.facebook}}</p>
             </div>
             <div *ngIf="informacion?.instagram" class="col-4 contact-item-container">
-                <a [href]="'https://instagram.com/' + informacion.instagram" target="_blank">
+                <a [href]="'https://instagram.com/' + informacion.instagram" target="_blank" class="contact-link">
                     <div class="logo-container">
-                        <i class="bi bi-instagram"></i>
+                        <i class="bi bi-instagram contact-icon"></i>
                     </div>
                 </a>
                 <p class="contact-text">{{informacion.instagram}}</p>
             </div>
             <div *ngIf="informacion?.github" class="col-4 contact-item-container">
-                <a [href]="'https://github.com/' + informacion.github" target="_blank">
+                <a [href]="'https://github.com/' + informacion.github" target="_blank" class="contact-link">
                     <div class="logo-container">
-                        <i class="bi bi-github"></i>
+                        <i class="bi bi-github contact-icon"></i>
                     </div>
                 </a>
                 <p class="contact-text">{{informacion.github}}</p>

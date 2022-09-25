@@ -8,6 +8,7 @@
 .proyects-title{
     margin-bottom: 5rem;
     font-size: 2.5rem;
+    text-align: center;
 }
 
 .proyects-container{
@@ -24,8 +25,8 @@
     display: inline-block;
 }
 
-.card-body{
-    padding: 0 0 0 0.7rem;
+.proyect-item-body{
+    padding-left: 0.7rem;
 }
 
 #proyects-img-container{
@@ -71,14 +72,44 @@
     padding: 0.5rem;
 }
 
+.proyects-empty{
+    background: linear-gradient(0deg, #59378e 0%, #2f1e4a 100%);
+}
+
+#btn-add-proyectos{
+    margin: auto;
+}
+
 @media screen and (max-width: 768px){
-    .proyectos-container{
-        width: 15rem;
-        margin: 0.5rem;
-        
+    #proyects{
+        padding: 2rem 0;
+        margin-top: -0.5rem;
     }
+
+    .proyects-title{
+        margin: 3rem;
+        font-size: 2rem;
+    }
+
+    .proyects-container{
+        width: 15rem;
+        display: inline-block;
+        margin: 1rem;
+    }
+
+    #proyects-img-container{
+        margin: 0.7rem;
+        border-radius: 10px;
+        overflow: hidden;
+        height: 15rem;
+    }
+
     #proyecto-banner{
         filter: brightness(1) grayscale(0);
         object-fit: cover;
+    }
+
+    #proyect-title{
+        font-size: 1.3rem;
     }
 }

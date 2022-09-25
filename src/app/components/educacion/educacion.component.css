@@ -1,21 +1,27 @@
 #education{
     border: none;
     border-radius: 0;
-    padding-top: 8rem;
+    padding: 5rem 0;
+    margin-top: -1rem;
 }
 
 .education-title{
     margin-bottom: 1.5rem;
     font-size: 2.3rem;
+    text-align: center;
 }
 
 #inner-card-body{
     padding: 0;
 }
 
+.education-info-col{
+    display: flex;
+    align-items: center;
+}
+
 #education-item-card{
     align-self: center;
-    width: 50rem;
     height: fit-content;
     padding: 0;
     margin: 1rem;
@@ -25,10 +31,16 @@
     text-align: left;
 }
 
-#dot-icon{
+.dot-container{
     height: 15rem;
-    margin-left: auto;
-    float: right;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: right;
+}
+
+#dot-icon{
+    height: 20rem;
 }
 
 #education-level{
@@ -64,11 +76,57 @@
     object-fit: contain;
 }
 
-
 .col-5, .col-4{
     display: flex;
 }
 
+.empty-section-outer-container{
+    margin-top: -1rem;
+}
 
+.empty-section-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
 
+.empty-section-title, .empty-section-text{
+    text-align: center;
+}
 
+#btn-add-educacion{
+    margin: auto;
+}
+
+@media screen and (max-width: 768px){
+    .education-img-col{
+        display: none;
+    }
+
+    .education-title{
+        margin: 3rem;
+        font-size: 2rem;
+    }
+
+    .dot-container{
+        height: 12rem;
+    }
+    
+    #dot-icon{
+        height: 15rem;
+    }
+
+    .education-item-title{
+        display: inline-block;
+        font-size: 1.2rem;
+    }
+
+    .education-institution{
+        font-size: 1rem;
+        margin-bottom: 0.5rem;
+    }
+
+    .education-item-date{
+        font-size: 0.7rem;
+    }
+ }

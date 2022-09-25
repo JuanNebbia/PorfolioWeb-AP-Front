@@ -1,6 +1,6 @@
 <app-loader *ngIf='loading'></app-loader>
-<div *ngIf="informacion && !loading" class="card text-center" id="sobre-mi">
-  <div class="card-body">
+<div *ngIf="informacion && !loading" class="card text-center" id="about">
+  <div class="card-body about-body">
     <h3 class="card-title title-hover about-title">Sobre mi</h3>
     <p class="card-text main-text about-text">{{informacion.descripcion}}</p>
     <div class="edit-about edit-btn-container" *ngIf="userLogged|async as user">
