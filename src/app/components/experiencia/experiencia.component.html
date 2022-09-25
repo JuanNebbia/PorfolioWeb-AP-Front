@@ -35,7 +35,7 @@
                         </div>  
                     </div>
                 </div>
-            <app-add-button id="btn-add-experiencia" data-bs-toggle="modal" data-bs-target="#addExperienciaModal" (click)="onOpenModal('add')"></app-add-button>
+            <app-add-button *ngIf="userLogged|async as user" id="btn-add-experiencia" data-bs-toggle="modal" data-bs-target="#addExperienciaModal" (click)="onOpenModal('add')"></app-add-button>
             </div>
         </div>
     </div>
