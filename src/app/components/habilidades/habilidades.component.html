@@ -49,7 +49,7 @@
 <div *ngIf="userLogged|async as user" class="empty-section-outer-container empty-skills">
     <div *ngIf="habilidades?.length==0" class="empty-section-container">
         <h3 class="card-title title-hover skills-title">Habilidades</h3>
-        <div *ngIf="habilidades?.length==0">
+        <div>
             <h4 class="empty-section-title">¡No hay habilidades para mostrar aun!</h4>
             <p class="empty-section-text text-muted">Click aquí abajo para agregar nuevas entradas</p>
         </div>
