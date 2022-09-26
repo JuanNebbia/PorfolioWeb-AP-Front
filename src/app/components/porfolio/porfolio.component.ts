@@ -7,8 +7,6 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PorfolioComponent implements OnInit {
 
-  rojo:string = "#f00";
-
   constructor() { }
 
   ngOnInit(): void {

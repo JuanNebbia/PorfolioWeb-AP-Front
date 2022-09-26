@@ -1,0 +1,34 @@
+.scroller-anchor{
+    position: fixed;
+    bottom: 5rem;
+    right: 5rem;
+    z-index: 500;
+    background-color: #f42bf9;
+    text-decoration: none;
+    width: 3rem;
+    height: 3rem;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.bi-caret-up-fill{
+    color: #09061c;
+    font-size: 2rem;
+}
+
+@media screen and (max-width: 768px){
+    .scroller-anchor{
+        bottom: 1.3rem;
+        right: 1.3rem;
+        width: 2.5rem;
+        height: 2.5rem;
+    }
+    
+    .bi-caret-up-fill{
+        color: #09061c;
+        font-size: 1.7rem;
+    }
+
+ }

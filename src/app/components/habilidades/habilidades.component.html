@@ -6,13 +6,17 @@
             <div class="skills-item-row row">
                 <div class="skills-container col-md-6" *ngFor="let habilidad of habilidades">
                     <h6 class="skills-item-title" [style]="{'color': habilidad.color}">{{habilidad.tecnologia}}</h6>
-                    <i *ngIf="habilidad.descripcion"
-                        class="bi bi-info-circle-fill icon-hover"
-                        mat-raised-button
-                        matTooltip="{{habilidad.descripcion}}"
-                        matTooltipClass="description-tooltip"
-                        matTooltipPosition="right">
-                    </i>
+                    <button 
+                        (click)="tooltip.toggle()" 
+                        class="tooltip-btn">
+                        <i  #tooltip="matTooltip"
+                            class="bi bi-info-circle-fill icon-hover"
+                            matTooltipClass="description-tooltip"
+                            matTooltip="{{habilidad.descripcion}}">
+                        </i>
+                    </button>
+
+                    
                     <!-- <p class="text-white skills-description">{{habilidad.descripcion}}</p> -->
                     <div class="progress-bar-row">
                         <div class="tech-logo-container">

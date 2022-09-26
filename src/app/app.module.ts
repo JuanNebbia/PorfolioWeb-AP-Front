@@ -22,6 +22,7 @@ import { environment } from 'src/environments/environment';
 import { LoaderComponent } from './components/loader/loader.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { ScrollerComponent } from './components/scroller/scroller.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import { MatTooltipModule } from '@angular/material/tooltip';
     AddButtonComponent,
     ContactoComponent,
     LoginComponent,
-    LoaderComponent
+    LoaderComponent,
+    ScrollerComponent
   ],
   imports: [
     BrowserModule,
