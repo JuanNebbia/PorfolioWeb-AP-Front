@@ -55,10 +55,6 @@
     transition: filter 0.1s;
 }
 
-#profile-img-container:hover{
-    box-shadow: 0px 0px 3px #000; 
-}
-
 #card-body-1{
     margin-right: auto;
     margin-top: auto;
