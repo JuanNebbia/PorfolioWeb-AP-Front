@@ -1,9 +1,7 @@
-import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { collectionData, Firestore } from '@angular/fire/firestore';
-import { collection } from 'firebase/firestore';
+import { addDoc, collection, updateDoc, doc, deleteDoc } from 'firebase/firestore';
 import { Observable } from 'rxjs/internal/Observable';
-import { environment } from 'src/environments/environment';
 import { Proyectos } from '../models/proyectos';
 
 @Injectable({
@@ -11,24 +9,25 @@ import { Proyectos } from '../models/proyectos';
 })
 export class ProyectosService {
 
-  private apiServerUrl = "https://porfolio-web-ap.herokuapp.com"
+  private proyectosRef = collection(this.firestore, 'proyectos')
 
   constructor(private firestore: Firestore) { }
 
   public getProyectos():Observable<Proyectos[]>{
-    const proyectosRef = collection(this.firestore, 'proyectos')
-    return collectionData(proyectosRef, {idField: 'id'}) as Observable<Proyectos[]>
+    return collectionData(this.proyectosRef, {idField: 'id'}) as Observable<Proyectos[]>
   }
 
-  // public addProyectos(proyectos:Proyectos):Observable<Proyectos>{
-  //   return this.http.post<Proyectos>(`${this.apiServerUrl}/proyectos/add`, proyectos);
-  // }
+  public addProyectos(proyectos:Proyectos): Promise<Object>{
+    return addDoc(this.proyectosRef, proyectos)
+  }
 
-  // public updateProyectos(proyectos:Proyectos): Observable<Proyectos>{
-  //   return this.http.put<Proyectos>(`${this.apiServerUrl}/proyectos/update`, proyectos);
-  // }
+  public updateProyectos(proyectos:Proyectos): Promise<void>{
+    const proyectDocRef = doc(this.firestore, 'proyectos', proyectos.id)
+    return updateDoc(proyectDocRef, {...proyectos})
+  }
 
-  // public deleteProyectos(proyectosId:number): Observable<void>{
-  //   return this.http.delete<void>(`${this.apiServerUrl}/proyectos/delete/${proyectosId}`);
-  // }
+  public deleteProyectos(id: string): Promise<void>{
+    const proyectDocRef = doc(this.firestore, 'proyectos', id)
+    return deleteDoc(proyectDocRef)
+  }
 }

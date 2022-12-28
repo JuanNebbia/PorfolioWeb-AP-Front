@@ -31,64 +31,26 @@ export class ProyectosComponent implements OnInit {
         this.loading=false
       },
       error:(error)=>{
-        alert(error);
+        console.log(error);
       },
       complete:()=>this.loading=false
     })
   }
 
-  public getProyectos():void{
-    this.proyectosService.getProyectos().subscribe({
-      next:(Response: Proyectos[]) =>{
-        this.proyectos=Response;
-      },
-      error:(error:HttpErrorResponse)=>{
-        alert(error.message);
-      },
-      complete:()=>this.loading=false
-    })
+  public onAddProyectos(addForm: NgForm){
+    document.getElementById("add-proyectos-form")?.click();
+    this.proyectosService.addProyectos(addForm.value)
   }
 
-  // public onAddProyectos(addForm: NgForm){
-  //   document.getElementById("add-proyectos-form")?.click();
-  //   this.proyectosService.addProyectos(addForm.value).subscribe({
-  //     next: (response:Proyectos) =>{
-  //       console.log(response);
-  //       this.getProyectos();
-  //       addForm.reset();
-  //     },
-  //     error:(error:HttpErrorResponse)=>{
-  //       alert(error.message);
-  //       addForm.reset;
-  //     }
-  //   })
-  // }
+  public onUpdateProyectos(proyectos:Proyectos){
+    this.updateProyectos=proyectos;
+    document.getElementById("update-proyectos-form")?.click();
+    this.proyectosService.updateProyectos(proyectos)
+  }
 
-  // public onUpdateProyectos(proyectos:Proyectos){
-  //   this.updateProyectos=proyectos;
-  //   document.getElementById("update-proyectos-form")?.click();
-  //   this.proyectosService.updateProyectos(proyectos).subscribe({
-  //     next: (response:Proyectos) =>{
-  //       console.log(response);
-  //       this.getProyectos();
-  //     },
-  //     error:(error:HttpErrorResponse)=>{
-  //       alert(error.message);
-  //     }
-  //   })
-  // }
-
-  // public onDeleteProyectos(idProyectos:number):void{
-  //   this.proyectosService.deleteProyectos(idProyectos).subscribe({
-  //     next: (response:void) =>{
-  //       console.log(response);
-  //       this.getProyectos();
-  //     },
-  //     error:(error:HttpErrorResponse)=>{
-  //       alert(error.message);
-  //     }
-  //   })
-  // }
+  public onDeleteProyectos(idProyectos:string):void{
+    this.proyectosService.deleteProyectos(idProyectos)
+  }
 
   public onOpenModal(mode:String, proyectos?:Proyectos):void{
     const container = document.getElementById('main-container');
