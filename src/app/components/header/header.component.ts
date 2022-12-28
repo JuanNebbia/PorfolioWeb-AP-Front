@@ -1,34 +1,34 @@
-import { HttpErrorResponse } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
-import { Informacion } from 'src/app/models/informacion';
-import { HeaderService } from 'src/app/services/header.service';
+// import { HttpErrorResponse } from '@angular/common/http';
+// import { Component, OnInit } from '@angular/core';
+// import { Informacion } from 'src/app/models/informacion';
+// import { HeaderService } from 'src/app/services/header.service';
 
-@Component({
-  selector: 'app-header',
-  templateUrl: './header.component.html',
-  styleUrls: ['./header.component.css']
-})
-export class HeaderComponent implements OnInit {
+// @Component({
+//   selector: 'app-header',
+//   templateUrl: './header.component.html',
+//   styleUrls: ['./header.component.css']
+// })
+// export class HeaderComponent implements OnInit {
 
-  public informacion:Informacion | undefined;
-  public loading:boolean = true;
+//   public informacion:Informacion | undefined;
+//   public loading:boolean = true;
 
-  constructor(private headerService:HeaderService) { }
+//   constructor(private headerService:HeaderService) { }
 
-  ngOnInit(): void {
-    this.getInformacion();
-  }
+//   ngOnInit(): void {
+//     this.getInformacion();
+//   }
 
-  public getInformacion():void{
-    this.headerService.getInformacion().subscribe({
-      next: (response: Informacion)=>{
-        this.informacion = response;
-      },
-      error:(error:HttpErrorResponse)=>{
-        console.log(error.message);
-      },
-      complete: () => this.loading = false
-    });
-  }
+//   public getInformacion():void{
+//     this.headerService.getInformacion().subscribe({
+//       next: (response: Informacion)=>{
+//         this.informacion = response;
+//       },
+//       error:(error:HttpErrorResponse)=>{
+//         console.log(error.message);
+//       },
+//       complete: () => this.loading = false
+//     });
+//   }
 
-}
+// }

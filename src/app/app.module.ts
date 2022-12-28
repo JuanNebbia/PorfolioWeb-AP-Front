@@ -8,7 +8,7 @@ import { PorfolioComponent } from './components/porfolio/porfolio.component';
 import { ExperienciaComponent } from './components/experiencia/experiencia.component';
 import { EducacionComponent } from './components/educacion/educacion.component';
 import { HabilidadesComponent } from './components/habilidades/habilidades.component';
-import { HeaderComponent } from './components/header/header.component';
+// import { HeaderComponent } from './components/header/header.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { ProyectosComponent } from './components/proyectos/proyectos.component';
 import { SobreMiComponent } from './components/sobre-mi/sobre-mi.component';
@@ -23,6 +23,8 @@ import { LoaderComponent } from './components/loader/loader.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { ScrollerComponent } from './components/scroller/scroller.component';
+import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
+import { provideFirestore,getFirestore } from '@angular/fire/firestore';
 
 @NgModule({
   declarations: [
@@ -31,7 +33,7 @@ import { ScrollerComponent } from './components/scroller/scroller.component';
     ExperienciaComponent,
     EducacionComponent,
     HabilidadesComponent,
-    HeaderComponent,
+    // HeaderComponent,
     NavbarComponent,
     ProyectosComponent,
     SobreMiComponent,
@@ -49,7 +51,9 @@ import { ScrollerComponent } from './components/scroller/scroller.component';
     FormsModule,
     AngularFireModule.initializeApp(environment.firebase),
     BrowserAnimationsModule,
-    MatTooltipModule
+    MatTooltipModule,
+    provideFirebaseApp(() => initializeApp(environment.firebase)),
+    provideFirestore(() => getFirestore())
   ],
   providers: [],
   bootstrap: [AppComponent]

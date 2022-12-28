@@ -1,5 +1,5 @@
 export interface Proyectos{
-    idProyectos:number;
+    id:string;
     titulo:String;
     descripcion:String;
     imgProyectos:String;
