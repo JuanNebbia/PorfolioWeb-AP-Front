@@ -8,7 +8,7 @@ import { PorfolioComponent } from './components/porfolio/porfolio.component';
 import { ExperienciaComponent } from './components/experiencia/experiencia.component';
 import { EducacionComponent } from './components/educacion/educacion.component';
 import { HabilidadesComponent } from './components/habilidades/habilidades.component';
-// import { HeaderComponent } from './components/header/header.component';
+import { HeaderComponent } from './components/header/header.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { ProyectosComponent } from './components/proyectos/proyectos.component';
 import { SobreMiComponent } from './components/sobre-mi/sobre-mi.component';
@@ -33,7 +33,7 @@ import { provideFirestore,getFirestore } from '@angular/fire/firestore';
     ExperienciaComponent,
     EducacionComponent,
     HabilidadesComponent,
-    // HeaderComponent,
+    HeaderComponent,
     NavbarComponent,
     ProyectosComponent,
     SobreMiComponent,

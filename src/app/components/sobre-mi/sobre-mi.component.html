@@ -2,9 +2,9 @@
 <div *ngIf="informacion && !loading" class="card text-center" id="about">
   <div class="card-body about-body">
     <h3 class="card-title title-hover about-title">Sobre mi</h3>
-    <p class="card-text main-text about-text">{{informacion.descripcion}}</p>
+    <p class="card-text main-text about-text">{{informacion.description}}</p>
     <div class="edit-about edit-btn-container" *ngIf="userLogged|async as user">
-      <button *ngIf="informacion?.descripcion!==''" 
+      <button *ngIf="informacion?.description!==''" 
         class="btn" id="btn-update-sobre-mi" 
         data-bs-toggle="modal" 
         data-bs-target="#updateSobreMiModal" 
@@ -13,8 +13,8 @@
           <i class="bi bi-pencil-fill icon-hover"></i>
       </button>
       </div>
-      <div *ngIf="informacion?.descripcion==''">
-        <h5 class="text-white">¡No hay una descripcion cargada para mostrar!</h5>
+      <div *ngIf="informacion?.description==''">
+        <h5 class="text-white">¡No hay una description cargada para mostrar!</h5>
         <p class="text-muted">Click aquí abajo para agregar una</p>
         <app-add-button  id="btn-add-sobre-mi" data-bs-toggle="modal" data-bs-target="#updateSobreMiModal" (click)="onOpenModal(informacion)"></app-add-button>
       </div>
@@ -38,24 +38,24 @@
                       <input ngModel="{{updateInformacion?.id}}" name="id" type="text" class="form-control" required>
                   </div>
                   <div class="form-group mb-3" hidden>
-                    <label for="exampleInputEmail1" class="form-label">nombre</label>
-                    <input ngModel="{{updateInformacion?.nombre}}" name="nombre" type="text" class="form-control" required>
+                    <label for="exampleInputEmail1" class="form-label">name</label>
+                    <input ngModel="{{updateInformacion?.name}}" name="name" type="text" class="form-control" required>
                   </div>
                   <div class="form-group mb-3" hidden>
-                    <label for="exampleInputEmail1" class="form-label">apellido</label>
-                    <input ngModel="{{updateInformacion?.apellido}}" name="apellido" type="text" class="form-control" required>
+                    <label for="exampleInputEmail1" class="form-label">lastName</label>
+                    <input ngModel="{{updateInformacion?.lastName}}" name="lastName" type="text" class="form-control" required>
                   </div>
                   <div class="form-group mb-3" hidden>
-                    <label for="exampleInputEmail1" class="form-label">titulo</label>
-                    <input ngModel="{{updateInformacion?.titulo}}" name="titulo" type="text" class="form-control" required>
+                    <label for="exampleInputEmail1" class="form-label">title</label>
+                    <input ngModel="{{updateInformacion?.title}}" name="title" type="text" class="form-control" required>
                   </div>
                   <div class="form-group mb-3" hidden>
-                    <label for="exampleInputEmail1" class="form-label">locacion</label>
-                    <input ngModel="{{updateInformacion?.locacion}}" name="locacion" type="text" class="form-control" required>
+                    <label for="exampleInputEmail1" class="form-label">location</label>
+                    <input ngModel="{{updateInformacion?.location}}" name="location" type="text" class="form-control" required>
                   </div>
                   <div class="form-group mb-3" hidden>
-                    <label for="exampleInputEmail1" class="form-label">imgPerfil</label>
-                    <input ngModel="{{updateInformacion?.imgPerfil}}" name="imgPerfil" type="text" class="form-control" required>
+                    <label for="exampleInputEmail1" class="form-label">imgProfile</label>
+                    <input ngModel="{{updateInformacion?.imgProfile}}" name="imgProfile" type="text" class="form-control" required>
                   </div>
                   <div class="form-group mb-3" hidden>
                     <label for="exampleInputEmail1" class="form-label">imgBanner</label>
@@ -66,28 +66,20 @@
                     <input ngModel="{{updateInformacion?.email}}" name="email" type="text" class="form-control" required>
                   </div>
                   <div class="form-group mb-3" hidden>
-                    <label for="exampleInputEmail1" class="form-label">facebook</label>
-                    <input ngModel="{{updateInformacion?.facebook}}" name="facebook" type="text" class="form-control" required>
-                  </div>
-                  <div class="form-group mb-3" hidden>
-                    <label for="exampleInputEmail1" class="form-label">instagram</label>
-                    <input ngModel="{{updateInformacion?.instagram}}" name="instagram" type="text" class="form-control" required>
-                  </div>
-                  <div class="form-group mb-3" hidden>
                     <label for="exampleInputEmail1" class="form-label">github</label>
                     <input ngModel="{{updateInformacion?.github}}" name="github" type="text" class="form-control" required>
                   </div>
                   <div class="form-group mb-3" hidden>
-                    <label for="exampleInputEmail1" class="form-label">telefono</label>
-                    <input ngModel="{{updateInformacion?.telefono}}" name="telefono" type="text" class="form-control" required>
+                    <label for="exampleInputEmail1" class="form-label">phone</label>
+                    <input ngModel="{{updateInformacion?.phone}}" name="phone" type="text" class="form-control" required>
                   </div>
                   <div class="form-group mb-3">
                     <label for="exampleInputEmail1" class="form-label">Editar descripción</label>
-                    <textarea id="editar-descripcion-input" ngModel="{{updateInformacion?.descripcion}}" name="descripcion" type="text-area" class="form-control" required></textarea>
+                    <textarea id="editar-description-input" ngModel="{{updateInformacion?.description}}" name="description" type="text-area" class="form-control" required></textarea>
                 </div>
-                  <div class="modal-footer">
+                  <!-- <div class="modal-footer">
                       <button class="btn btn-primary" (click)="onUpdateInformacion(updateForm.value)">Guardar cambios</button>
-                  </div>
+                  </div> -->
               </form>
           </div>
       </div>

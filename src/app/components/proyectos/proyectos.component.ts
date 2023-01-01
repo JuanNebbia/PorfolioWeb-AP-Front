@@ -21,10 +21,10 @@ export class ProyectosComponent implements OnInit {
   constructor(private proyectosService:ProyectosService, private authenticationService:AuthenticationService) { }
 
   ngOnInit(): void {
-    this.getProyectoss()
+    this.getProyectos()
   }
 
-  public getProyectoss():void{
+  public getProyectos():void{
     this.proyectosService.getProyectos().subscribe({
       next:(Response: Proyectos[]) =>{
         this.proyectos=Response;

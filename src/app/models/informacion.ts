@@ -1,15 +1,13 @@
 export interface Informacion{
     id:number;
-    nombre:String;
-    apellido:String;
-    titulo:String;
+    name:String;
+    lastName:String;
+    title:String;
     email:String;
-    facebook:String;
-    instagram:String;
     github:String;
-    telefono:String;
-    descripcion:String;
-    locacion:String;
-    imgPerfil:String;
+    phone:String;
+    description:String;
+    location:String;
+    imgProfile:String;
     imgBanner:String;
 }

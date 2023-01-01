@@ -8,16 +8,16 @@
         <div class="row header-row">
             <div class="col-md-5 header-img-col">
                 <div  class="rounded-circle d-flex" id="profile-img-container">
-                    <img [src]="(informacion.imgPerfil)" class="profile-img" id="profile-img" alt="foto perfil">
+                    <img [src]="(informacion.imgProfile)" class="profile-img" id="profile-img" alt="foto perfil">
                 </div>
             </div>
             <div class="col-md-7">
                 <div class="card-body" id="card-body-1">
                     <div class="container-fluid" id="titles-container">
-                        <h1 class="card-title text-white">{{informacion.nombre + " " + informacion.apellido}}</h1> 
+                        <h1 class="card-title text-white">{{informacion.name + " " + informacion.lastName}}</h1> 
                         <hr>
-                        <h2 class="card-subtitle h5 text-white" >{{informacion.titulo}}</h2>
-                        <p class="card-subtitle text-white" id="header-locacion">{{informacion.locacion}}</p>
+                        <h2 class="card-subtitle h5 text-white" >{{informacion.title}}</h2>
+                        <p class="card-subtitle text-white" id="header-locacion">{{informacion.location}}</p>
                     </div> 
                 </div>
             </div>
