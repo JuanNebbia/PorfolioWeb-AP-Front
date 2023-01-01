@@ -26,27 +26,18 @@ export class SobreMiComponent implements OnInit {
     this.headerService.getInformacion().subscribe({
       next: (response: Informacion)=>{
         this.informacion = response;
+        this.loading=false
       },
       error:(error:HttpErrorResponse)=>{
         console.log(error.message);
-      },
-      complete:()=>this.loading=false
-    });
+      }});
   }
 
-  // public onUpdateInformacion(informacion:Informacion){
-  //   this.updateInformacion=informacion;
-  //   document.getElementById("update-informacion-form")?.click();
-  //   this.headerService.updateInformacion(informacion).subscribe({
-  //     next: (response:Informacion) =>{
-  //       console.log(response);
-  //       this.getInformacion();
-  //     },
-  //     error:(error:HttpErrorResponse)=>{
-  //       console.log(error.message);
-  //     }
-  //   })
-  // }
+  public onUpdateInformacion(informacion:Informacion){
+    this.updateInformacion=informacion;
+    document.getElementById("update-informacion-form")?.click();
+    this.headerService.updateInformacion(informacion)
+  }
 
 
   public onOpenModal(informacion?:Informacion):void{

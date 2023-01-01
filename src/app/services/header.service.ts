@@ -3,7 +3,7 @@ import { environment } from 'src/environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs/internal/Observable';
 import { Informacion } from '../models/informacion';
-import { collection, doc, getDoc } from 'firebase/firestore';
+import { collection, doc, getDoc, updateDoc } from 'firebase/firestore';
 import { collectionData, docData, Firestore } from '@angular/fire/firestore';
 
 @Injectable({
@@ -17,11 +17,11 @@ export class HeaderService {
 
   public getInformacion(): Observable<Informacion>{
     const docSnap = getDoc(this.informacionRef)
-    console.log(docData(this.informacionRef))
     return docData(this.informacionRef) as Observable<Informacion>
   }
 
-  // public updateInformacion(informacion: Informacion): Observable<Informacion>{
-  //   return this.http.put<Informacion>(`${this.apiServerUrl}/informacion/update`, informacion);
-  // }
+  public updateInformacion(informacion: Informacion): Promise<void>{
+    const infoDocRef = doc(this.firestore, 'informacion', 'gUYdTtp3JhWf2EvpcR9U')
+    return updateDoc(this.informacionRef, {...informacion})
+  }
 }
