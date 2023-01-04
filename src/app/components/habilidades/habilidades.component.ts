@@ -26,25 +26,14 @@ export class HabilidadesComponent implements OnInit {
 
   
   ngOnInit(): void {
-    this.getHabilidadess()
-  }
-
-  public getHabilidadess():void{
-    this.habilidadesService.getHabilidades().subscribe({
-      next:(Response: Habilidades[]) =>{
-        this.habilidades=Response;
-      },
-      error:(error:HttpErrorResponse)=>{
-        console.log(error.message);
-      },
-      complete: () => this.loading = false
-    })
+    this.getHabilidades()
   }
 
   public getHabilidades():void{
     this.habilidadesService.getHabilidades().subscribe({
       next:(Response: Habilidades[]) =>{
         this.habilidades=Response;
+        this.loading = false
       },
       error:(error:HttpErrorResponse)=>{
         console.log(error.message);
@@ -52,45 +41,20 @@ export class HabilidadesComponent implements OnInit {
     })
   }
 
+
   public onAddHabilidades(addForm: NgForm){
     document.getElementById("add-habilidades-form")?.click();
-    this.habilidadesService.addHabilidades(addForm.value).subscribe({
-      next: (response:Habilidades) =>{
-        console.log(response);
-        this.getHabilidades();
-        addForm.reset();
-      },
-      error:(error:HttpErrorResponse)=>{
-        console.log(error.message);
-        addForm.reset;
-      }
-    })
+    this.habilidadesService.addHabilidades(addForm.value)
   }
 
   public onUpdateHabilidades(habilidades:Habilidades){
     this.updateHabilidades=habilidades;
     document.getElementById("update-habilidades-form")?.click();
-    this.habilidadesService.updateHabilidades(habilidades).subscribe({
-      next: (response:Habilidades) =>{
-        console.log(response);
-        this.getHabilidades();
-      },
-      error:(error:HttpErrorResponse)=>{
-        console.log(error.message);
-      }
-    })
+    this.habilidadesService.updateHabilidades(habilidades)
   }
 
-  public onDeleteHabilidades(idHabilidades:number):void{
-    this.habilidadesService.deleteHabilidades(idHabilidades).subscribe({
-      next: (response:void) =>{
-        console.log(response);
-        this.getHabilidades();
-      },
-      error:(error:HttpErrorResponse)=>{
-        console.log(error.message);
-      }
-    })
+  public onDeleteHabilidades(id:string):void{
+    this.habilidadesService.deleteHabilidades(id)
   }
 
   public onOpenModal(mode:String, habilidades?:Habilidades):void{

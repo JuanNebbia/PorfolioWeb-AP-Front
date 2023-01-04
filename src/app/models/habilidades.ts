@@ -1,5 +1,5 @@
 export interface Habilidades{
-    idHabilidad:number;
+    id:string;
     tecnologia:String;
     descripcion:String;
     nivel:number;

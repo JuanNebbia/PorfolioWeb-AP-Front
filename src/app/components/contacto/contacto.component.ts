@@ -23,12 +23,10 @@ export class ContactoComponent implements OnInit {
     this.headerService.getInformacion().subscribe({
       next: (response: Informacion)=>{
         this.informacion = response;
+        this.loading = false;
       },
       error:(error:HttpErrorResponse)=>{
         console.log(error.message);
-      },
-      complete: () => {
-        this.loading = false;
       }
     });
   }

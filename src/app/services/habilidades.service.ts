@@ -1,7 +1,7 @@
-import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { collectionData, Firestore } from '@angular/fire/firestore';
+import { addDoc, collection, deleteDoc, doc, updateDoc } from 'firebase/firestore';
 import { Observable } from 'rxjs/internal/Observable';
-import { environment } from 'src/environments/environment';
 import { Habilidades } from '../models/habilidades';
 
 @Injectable({
@@ -9,23 +9,25 @@ import { Habilidades } from '../models/habilidades';
 })
 export class HabilidadesService {
 
-  private apiServerUrl = "https://porfolio-web-ap.herokuapp.com"
+  private habilidadesRef = collection(this.firestore, 'habilidades')
 
-  constructor(private http: HttpClient) { }
+  constructor(private firestore: Firestore) { }
 
   public getHabilidades():Observable<Habilidades[]>{
-    return this.http.get<Habilidades[]>(`${this.apiServerUrl}/habilidades/all`);
+    return collectionData(this.habilidadesRef, {idField: 'id'}) as Observable<Habilidades[]>
   }
 
-  public addHabilidades(habilidades:Habilidades):Observable<Habilidades>{
-    return this.http.post<Habilidades>(`${this.apiServerUrl}/habilidades/add`, habilidades);
+  public addHabilidades(habilidades:Habilidades): Promise<Object>{
+    return addDoc(this.habilidadesRef, habilidades)
   }
 
-  public updateHabilidades(habilidades:Habilidades): Observable<Habilidades>{
-    return this.http.put<Habilidades>(`${this.apiServerUrl}/habilidades/update`, habilidades);
+  public updateHabilidades(habilidades:Habilidades): Promise<void>{
+    const habilidadesDocRef = doc(this.firestore, 'habilidades', habilidades.id)
+    return updateDoc(habilidadesDocRef, {...habilidades})
   }
 
-  public deleteHabilidades(habilidadesId:number): Observable<void>{
-    return this.http.delete<void>(`${this.apiServerUrl}/habilidades/delete/${habilidadesId}`);
+  public deleteHabilidades(id: string): Promise<void>{
+    const habilidadesDocRef = doc(this.firestore, 'habilidades', id)
+    return deleteDoc(habilidadesDocRef)
   }
 }
