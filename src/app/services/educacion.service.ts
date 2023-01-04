@@ -1,7 +1,7 @@
-import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { collectionData, Firestore } from '@angular/fire/firestore';
+import { addDoc, collection, deleteDoc, doc, updateDoc } from 'firebase/firestore';
 import { Observable } from 'rxjs/internal/Observable';
-import { environment } from 'src/environments/environment';
 import { Educacion } from '../models/educacion';
 
 @Injectable({
@@ -9,24 +9,26 @@ import { Educacion } from '../models/educacion';
 })
 export class EducacionService {
 
-  private apiServerUrl = "https://porfolio-web-ap.herokuapp.com"
+  private educacionRef = collection(this.firestore, 'educacion')
 
-  constructor(private http: HttpClient) { }
+  constructor(private firestore: Firestore) { }
 
   public getEducacion():Observable<Educacion[]>{
-    return this.http.get<Educacion[]>(`${this.apiServerUrl}/educacion/all`);
+    return collectionData(this.educacionRef, {idField: 'id'}) as Observable<Educacion[]>
   }
 
-  public addEducacion(educacion:Educacion):Observable<Educacion>{
-    return this.http.post<Educacion>(`${this.apiServerUrl}/educacion/add`, educacion);
+  public addEducacion(educacion:Educacion): Promise<Object>{
+    return addDoc(this.educacionRef, educacion)
   }
 
-  public updateEducacion(educacion:Educacion): Observable<Educacion>{
-    return this.http.put<Educacion>(`${this.apiServerUrl}/educacion/update`, educacion);
+  public updateEducacion(educacion:Educacion): Promise<void>{
+    const educacionDocRef = doc(this.firestore, 'educacion', educacion.id)
+    return updateDoc(educacionDocRef, {...educacion})
   }
 
-  public deleteEducacion(educacionId:number): Observable<void>{
-    return this.http.delete<void>(`${this.apiServerUrl}/educacion/delete/${educacionId}`);
+  public deleteEducacion(id: string): Promise<void>{
+    const educacionDocRef = doc(this.firestore, 'educacion', id)
+    return deleteDoc(educacionDocRef)
   }
 }
 

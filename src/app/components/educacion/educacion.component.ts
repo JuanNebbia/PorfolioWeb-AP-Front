@@ -28,55 +28,27 @@ export class EducacionComponent implements OnInit {
     this.educacionService.getEducacion().subscribe({
       next:(Response: Educacion[]) =>{
         this.educaciones=Response;
+        this.loading = false;
       },
       error:(error:HttpErrorResponse)=>{
         console.log(error.message);
-      },
-      complete: () => {
-        this.loading = false;
       }
     })
   }
 
   public onAddEducacion(addForm: NgForm){
     document.getElementById("add-educacion-form")?.click();
-    this.educacionService.addEducacion(addForm.value).subscribe({
-      next: (response:Educacion) =>{
-        console.log(response);
-        this.getEducaciones();
-        addForm.reset();
-      },
-      error:(error:HttpErrorResponse)=>{
-        console.log(error.message);
-        addForm.reset;
-      }
-    })
+    this.educacionService.addEducacion(addForm.value)
   }
 
   public onUpdateEducacion(educacion:Educacion){
     this.updateEducacion=educacion;
     document.getElementById("update-educacion-form")?.click();
-    this.educacionService.updateEducacion(educacion).subscribe({
-      next: (response:Educacion) =>{
-        console.log(response);
-        this.getEducaciones();
-      },
-      error:(error:HttpErrorResponse)=>{
-        console.log(error.message);
-      }
-    })
+    this.educacionService.updateEducacion(educacion)
   }
 
-  public onDeleteEducacion(idEducacion:number):void{
-    this.educacionService.deleteEducacion(idEducacion).subscribe({
-      next: (response:void) =>{
-        console.log(response);
-        this.getEducaciones();
-      },
-      error:(error:HttpErrorResponse)=>{
-        console.log(error.message);
-      }
-    })
+  public onDeleteEducacion(idEducacion:string):void{
+    this.educacionService.deleteEducacion(idEducacion)
   }
 
   public onOpenModal(mode:String, educacion?:Educacion):void{

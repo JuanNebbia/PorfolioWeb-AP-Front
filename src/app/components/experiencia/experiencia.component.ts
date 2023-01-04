@@ -28,55 +28,27 @@ export class ExperienciaComponent implements OnInit {
     this.experienciaService.getExperiencia().subscribe({
       next:(Response: Experiencia[]) =>{
         this.experiencias=Response;
+        this.loading = false;
       },
       error:(error:HttpErrorResponse)=>{
         console.log(error.message);
-      },
-      complete: () => {
-        this.loading = false;
       }
     })
   }
 
   public onAddExperiencia(addForm: NgForm){
     document.getElementById("add-experiencia-form")?.click();
-    this.experienciaService.addExperiencia(addForm.value).subscribe({
-      next: (response:Experiencia) =>{
-        console.log(response);
-        this.getExperiencias();
-        addForm.reset();
-      },
-      error:(error:HttpErrorResponse)=>{
-        console.log(error.message);
-        addForm.reset;
-      }
-    })
+    this.experienciaService.addExperiencia(addForm.value)
   }
 
   public onUpdateExperiencia(experiencia:Experiencia){
     this.updateExperiencia=experiencia;
     document.getElementById("update-experiencia-form")?.click();
-    this.experienciaService.updateExperiencia(experiencia).subscribe({
-      next: (response:Experiencia) =>{
-        console.log(response);
-        this.getExperiencias();
-      },
-      error:(error:HttpErrorResponse)=>{
-        console.log(error.message);
-      }
-    })
+    this.experienciaService.updateExperiencia(experiencia)
   }
 
-  public onDeleteExperiencia(idExperiencia:number):void{
-    this.experienciaService.deleteExperiencia(idExperiencia).subscribe({
-      next: (response:void) =>{
-        console.log(response);
-        this.getExperiencias();
-      },
-      error:(error:HttpErrorResponse)=>{
-        console.log(error.message);
-      }
-    })
+  public onDeleteExperiencia(id:string):void{
+    this.experienciaService.deleteExperiencia(id)
   }
 
   public onOpenModal(mode:String, experiencia?:Experiencia):void{

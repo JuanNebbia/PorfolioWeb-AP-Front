@@ -1,31 +1,33 @@
-import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { collectionData, Firestore } from '@angular/fire/firestore';
+import { addDoc, collection, deleteDoc, doc, updateDoc } from 'firebase/firestore';
 import { Observable } from 'rxjs/internal/Observable';
-import { environment } from 'src/environments/environment';
 import { Experiencia } from '../models/experiencia';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ExperienciaService {
-  
-  private apiServerUrl = "https://porfolio-web-ap.herokuapp.com"
 
-  constructor(private http: HttpClient) { }
+  private experienciaRef = collection(this.firestore, 'experiencia')
+
+  constructor(private firestore: Firestore) { }
 
   public getExperiencia():Observable<Experiencia[]>{
-    return this.http.get<Experiencia[]>(`${this.apiServerUrl}/experiencia/all`);
+    return collectionData(this.experienciaRef, {idField: 'id'}) as Observable<Experiencia[]>
   }
 
-  public addExperiencia(experiencia:Experiencia):Observable<Experiencia>{
-    return this.http.post<Experiencia>(`${this.apiServerUrl}/experiencia/add`, experiencia);
+  public addExperiencia(experiencia:Experiencia): Promise<Object>{
+    return addDoc(this.experienciaRef, experiencia)
   }
 
-  public updateExperiencia(experiencia:Experiencia): Observable<Experiencia>{
-    return this.http.put<Experiencia>(`${this.apiServerUrl}/experiencia/update`, experiencia);
+  public updateExperiencia(experiencia:Experiencia): Promise<void>{
+    const experienciaDocRef = doc(this.firestore, 'experiencia', experiencia.id)
+    return updateDoc(experienciaDocRef, {...experiencia})
   }
 
-  public deleteExperiencia(experienciaId:number): Observable<void>{
-    return this.http.delete<void>(`${this.apiServerUrl}/experiencia/delete/${experienciaId}`);
+  public deleteExperiencia(id: string): Promise<void>{
+    const experienciaDocRef = doc(this.firestore, 'experiencia', id)
+    return deleteDoc(experienciaDocRef)
   }
 }

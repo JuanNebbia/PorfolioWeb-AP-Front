@@ -1,5 +1,5 @@
 export interface Experiencia{
-    idExperiencia:number;
+    id:string;
     empresa:String;
     cargo:String;
     fechaInicio:number;
