@@ -116,6 +116,7 @@
     width: 30%;
 }
 
+
 .project-btn-tag{
     margin-right: 0.5rem;
     vertical-align: middle;
@@ -140,6 +141,12 @@
 .link-btn{
     border: 2px solid #F42BF9;
     color: #F42BF9;
+}
+
+.project-btn:disabled{
+    color: #a8a8a8;
+    border: 2px solid #a8a8a8;
+    cursor: not-allowed;
 }
 
 .visit-link{
