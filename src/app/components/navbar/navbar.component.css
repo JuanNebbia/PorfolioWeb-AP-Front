@@ -1,11 +1,5 @@
 .navbar{
-    background-color: #09061cdd;
-    position: fixed;
-    width: 100%;
-}
-
-.ap-icon{
-    height: 5rem;
+    background-color: #09061c;
 }
 
 .navbar-container{
@@ -14,17 +8,16 @@
     background-color: #09061cdd;
 }
 
-.navbar-expand-lg{
-    padding:0 ;
-}
-
 .navbar-list{
     margin: auto;
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
 }
+
 
 .nav-item-link{
     text-decoration: none;
-    margin-right: 2rem;
     font-size: 1rem;
     font-weight: 500;
 }
@@ -35,24 +28,43 @@
 }
 
 .navbar-toggler{
-    border: 1px solid #f42bf9;
-}
-
-.navbar-toggler-icon{
+    border: none;
     color: #f42bf9;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    background-color: #09061c;
 }
-
 
 @media screen and (max-width: 1010px){
-    .nav-item-link{
-        margin-right: 1rem;
+
+    .navbar{
+        background-color: transparent;
+        position: fixed;
+        padding: 1.5rem 0 0 1.5rem;
     }
 
+    .navbar-container{
+        background-color: transparent;
+        justify-content: flex-start;
+    }
+   
+    .navbar-list{
+        gap: 1rem;   
+        background-color: #000d;
+        width: 100%;
+        border-radius: 10px;
+    }
+
+    .navbar-list:first-child{
+        padding: 2rem 0;
+    }
+    
     .nav-item{
         margin: 0.4rem auto;
     }
+
+    .nav-item-link{
+        text-align: center;
+        font-size: 1rem;
+    }
+
 }
 

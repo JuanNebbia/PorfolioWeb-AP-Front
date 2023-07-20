@@ -1,43 +1,23 @@
-<div *ngIf="habilidades?.length!==0">
+<div *ngIf="habilidades?.length!==0" >
     <app-loader *ngIf='loading'></app-loader>
-    <div *ngIf="habilidades && !loading" class="card text-center" id="skills">
+    <div *ngIf="habilidades && !loading" class="card text-center scroll-container" id="skills">
         <div *ngIf="habilidades && !loading" class="card-body">
-            <h3 class="card-title title-hover skills-title">Habilidades</h3>
-            <div class="skills-item-row row">
-                <div class="skills-container col-md-6" *ngFor="let habilidad of habilidades">
-                    <h6 class="skills-item-title" [style]="{'color': habilidad.color}">{{habilidad.tecnologia}}</h6>
-                    <button 
-                        (click)="tooltip.toggle()" 
-                        class="tooltip-btn">
-                        <i  #tooltip="matTooltip"
-                            class="bi bi-info-circle-fill icon-hover"
-                            matTooltipClass="description-tooltip"
-                            matTooltip="{{habilidad.descripcion}}">
-                        </i>
-                    </button>
-
-                    
-                    <!-- <p class="text-white skills-description">{{habilidad.descripcion}}</p> -->
-                    <div class="progress-bar-row">
-                        <div class="tech-logo-container">
-                            <img src="{{habilidad.imgHabilidad}}" alt="" class="logo-habilidad">
-                        </div>
-                        <div class="progress">
-                            <div 
-                                class="progress-bar progress-bar-striped progress-bar-animated" 
-                                id="barra-tecnologia" 
-                                role="progressbar"
-                                [style]="{'width': habilidad.nivel + '%', 'background-color': habilidad.color}">
+            <h3 class="section-title skills-title">Habilidades</h3>
+            <div class="skills-container">
+                <div *ngFor="let skill of habilidades" class="inner-skill-container" >
+                    <div class="background-container">
+                        <img class="background-img" src="assets/img/skill/{{skill.title}}.jpg" alt="">
+                    </div>
+                    <div class="skill-details">
+                        <h4 class="single-skill-title">{{skill.title}}</h4>
+                        <div class="items-container">
+                            <div *ngFor="let item of skill.items; let i = index" class="skill-item">
+                                <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="24" height="24" viewBox="0 0 24 24">
+                                    <path fill="#3e3" d="M 19.28125 5.28125 L 9 15.5625 L 4.71875 11.28125 L 3.28125 12.71875 L 8.28125 17.71875 L 9 18.40625 L 9.71875 17.71875 L 20.71875 6.71875 Z"></path>
+                                </svg>
+                                <p>{{item}}</p>
                             </div>
                         </div>
-                    </div>
-                    <div class="edit-skills edit-btn-container" *ngIf="userLogged|async as user">
-                        <button class="btn" id="btn-update-habilidades" data-bs-toggle="modal" data-bs-target="#updateHabilidadesModal" data-original-title="Update" (click)="onOpenModal('update', habilidad)">
-                            <i class="bi bi-pencil-fill icon-hover"></i>
-                        </button>
-                        <button class="btn" id="btn-delete-habilidades" data-bs-toggle="modal" data-bs-target="#deleteHabilidadesModal" data-original-title="Delete" (click)="onOpenModal('delete', habilidad)">
-                            <i class="bi bi bi-trash3-fill icon-hover"></i>
-                        </button>
                     </div>
                 </div>
             </div>
@@ -66,7 +46,7 @@
 
 
 <!--Add Modal -->
-<div class="modal fade" id="addHabilidadesModal" tabindex="-1" aria-labelledby="addHabilidadesModal" aria-hidden="true">
+<!-- <div class="modal fade" id="addHabilidadesModal" tabindex="-1" aria-labelledby="addHabilidadesModal" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
@@ -103,10 +83,10 @@
         </div>
       </div>
     </div>
-</div>
+</div> -->
 
 <!--Update Modal -->
-<div class="modal fade" id="updateHabilidadesModal" tabindex="-1" aria-labelledby="updateHabilidadesModal" aria-hidden="true">
+<!-- <div class="modal fade" id="updateHabilidadesModal" tabindex="-1" aria-labelledby="updateHabilidadesModal" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -146,10 +126,10 @@
             </div>
         </div>
     </div>
-</div>
+</div> -->
 
 <!--Delete Modal -->
-<div class="modal fade" id="deleteHabilidadesModal" tabindex="-1" aria-labelledby="deleteHabilidadesModal" aria-hidden="true">
+<!-- <div class="modal fade" id="deleteHabilidadesModal" tabindex="-1" aria-labelledby="deleteHabilidadesModal" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -169,4 +149,4 @@
             </div>
         </div>
     </div>
-</div>
+</div> -->

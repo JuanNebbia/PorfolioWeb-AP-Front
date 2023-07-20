@@ -1,7 +1,76 @@
 <div *ngIf="educaciones?.length!==0">
     <app-loader *ngIf='loading'></app-loader>
     <div *ngIf="educaciones && !loading" class="card text-center background-color" id="education">
-        <div class="card-body" id="main-card-body">
+        <h3 class="section-title education-title">Formación</h3>
+        <div *ngFor="let educacion of educaciones; let i = index" class="educaciones-container" >
+            <div class="education-item">
+                <div *ngIf="i % 2 === 0" class="line-container-left">
+                    <svg id="Capa_2" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 87.7 239.72" id="line-icon">
+                        <defs>
+                            <style>.cls-1{fill:#9718a0;}.cls-2{fill:#f40be9;filter:url(#drop-shadow-1);}.cls-3{clip-path:url(#clippath);}.cls-4{fill:none;}</style>
+                            <clipPath id="clippath"><rect class="cls-4" width="87.7" height="239.72"/></clipPath>
+                            <filter id="drop-shadow-1" filterUnits="userSpaceOnUse"><feOffset dx="0" dy="0"/>
+                            <feGaussianBlur result="blur" stdDeviation="5"/>
+                            <feFlood flood-color="#000" flood-opacity=".75"/>
+                            <feComposite in2="blur" operator="in"/>
+                            <feComposite in="SourceGraphic"/>
+                            </filter>
+                        </defs>
+                        <g id="Capa_1-2">
+                            <g class="cls-3">
+                                <path class="cls-1" d="M43.85,1031.34c-1.1,0-2-.9-2-2V-2.21c0-1.1,.9-2,2-2s2,.9,2,2V1029.34c0,1.1-.9,2-2,2Z"/>
+                                <circle class="cls-2" cx="43.85" cy="119.86" r="13.12"/>
+                            </g>
+                        </g>
+                    </svg>
+                </div>
+                <div class="education-card" [ngClass]="{left: i % 2 !== 0} ">
+                    <p class="education-item-date">{{educacion.dateStart}} / {{educacion.dateEnd}}</p>
+                    <h6 class="education-item-title">{{educacion.titulo}}</h6>
+                    <p class="education-item-institution">{{educacion.institucion}}</p>
+                    <button *ngIf="educacion.certificate" class="certificate-btn"><a href="{{educacion.certificate}}" target="_blank">Ver Certificado</a></button>
+                </div>
+                <div *ngIf="i % 2 !== 0" class="line-container-right">
+                    <svg id="Capa_2" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 87.7 239.72" id="line-icon">
+                        <defs>
+                            <style>.cls-1{fill:#9718a0;}.cls-2{fill:#f40be9;filter:url(#drop-shadow-1);}.cls-3{clip-path:url(#clippath);}.cls-4{fill:none;}</style>
+                            <clipPath id="clippath"><rect class="cls-4" width="87.7" height="239.72"/></clipPath>
+                            <filter id="drop-shadow-1" filterUnits="userSpaceOnUse"><feOffset dx="0" dy="0"/>
+                            <feGaussianBlur result="blur" stdDeviation="5"/>
+                            <feFlood flood-color="#000" flood-opacity=".75"/>
+                            <feComposite in2="blur" operator="in"/>
+                            <feComposite in="SourceGraphic"/>
+                            </filter>
+                        </defs>
+                        <g id="Capa_1-2">
+                            <g class="cls-3">
+                                <path class="cls-1" d="M43.85,1031.34c-1.1,0-2-.9-2-2V-2.21c0-1.1,.9-2,2-2s2,.9,2,2V1029.34c0,1.1-.9,2-2,2Z"/>
+                                <circle class="cls-2" cx="43.85" cy="119.86" r="13.12"/>
+                            </g>
+                        </g>
+                    </svg>
+                </div>
+            </div>
+
+        </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <!-- <div class="card-body" id="main-card-body">
             <h3 class="card-title title-hover education-title">Educación</h3>
             <div class="main-container">
                 <div class="educaciones-container" *ngFor="let educacion of educaciones">
@@ -36,7 +105,7 @@
                 </div>
                 <app-add-button *ngIf="userLogged|async as user" id="btn-add-educacion" data-bs-toggle="modal" data-bs-target="#addEducacionModal" (click)="onOpenModal('add')"></app-add-button>
             </div>
-        </div>
+        </div> -->
     </div>
 </div>
 

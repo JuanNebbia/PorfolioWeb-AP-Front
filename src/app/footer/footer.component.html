@@ -1,0 +1,19 @@
+<app-loader *ngIf='loading'></app-loader>
+<div *ngIf="informacion && !loading" class="footer-container background-color">
+    <div class="footer-item">
+        <h6 class="footer-title">Github</h6>
+        <a href="https://github.com/{{informacion.github}}" target="_blank" class="footer-link">{{informacion.github}}</a>
+    </div>
+    <div class="footer-item">
+        <h6 class="footer-title">Email</h6>
+        <a href="https://mail.google.com/mail/?view=cm&fs=1&to={{informacion.email}}" target="_blank" class="footer-link">{{informacion.email}}</a>
+    </div>
+    <div class="footer-item">
+        <h6 class="footer-title">LinkedIn</h6>
+        <a href="https://www.linkedin.com/in{{informacion.linkedIn}}" target="_blank" class="footer-link">{{informacion.linkedIn}}</a>
+    </div>
+    <div class="footer-item">
+        <h6 class="footer-title">Celular</h6>
+        <a href="https://wa.me/{{informacion.phone}}" target="_blank" class="footer-link">{{informacion.phone}}</a>
+    </div>
+</div>

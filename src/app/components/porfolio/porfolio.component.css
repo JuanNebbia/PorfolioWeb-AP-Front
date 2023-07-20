@@ -1,4 +1,16 @@
 svg{
-    background-color: #59378e;
+    background-color: #422475;
     margin-top: -1rem;
+}
+
+.main-container{
+    background: linear-gradient(to bottom, #09061c 75%, #422475 90%);
+    width: 100%;
+}
+
+
+@media screen and (max-width: 1010px){
+    .app-scroller{
+        display: none;
+    }
 }

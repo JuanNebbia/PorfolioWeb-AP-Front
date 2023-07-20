@@ -11,8 +11,7 @@ import { HabilidadesComponent } from './components/habilidades/habilidades.compo
 import { HeaderComponent } from './components/header/header.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { ProyectosComponent } from './components/proyectos/proyectos.component';
-import { SobreMiComponent } from './components/sobre-mi/sobre-mi.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { TechBarComponent } from './components/tech-bar/tech-bar.component';
 import { AddButtonComponent } from './components/add-button/add-button.component';
 import { ContactoComponent } from './components/contacto/contacto.component';
@@ -25,6 +24,8 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { ScrollerComponent } from './components/scroller/scroller.component';
 import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
 import { provideFirestore,getFirestore } from '@angular/fire/firestore';
+import { FooterComponent } from './footer/footer.component';
+import { InboxComponent } from './inbox/inbox.component';
 
 @NgModule({
   declarations: [
@@ -36,19 +37,21 @@ import { provideFirestore,getFirestore } from '@angular/fire/firestore';
     HeaderComponent,
     NavbarComponent,
     ProyectosComponent,
-    SobreMiComponent,
     TechBarComponent,
     AddButtonComponent,
     ContactoComponent,
     LoginComponent,
     LoaderComponent,
-    ScrollerComponent
+    ScrollerComponent,
+    FooterComponent,
+    InboxComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
+    ReactiveFormsModule,
     AngularFireModule.initializeApp(environment.firebase),
     BrowserAnimationsModule,
     MatTooltipModule,

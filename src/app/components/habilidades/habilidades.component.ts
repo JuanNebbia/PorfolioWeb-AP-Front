@@ -22,8 +22,6 @@ export class HabilidadesComponent implements OnInit {
   userLogged = this.authenticationService.getLoggedUser();
 
   constructor(private habilidadesService:HabilidadesService, private authenticationService:AuthenticationService) { }
-
-
   
   ngOnInit(): void {
     this.getHabilidades()
@@ -32,7 +30,14 @@ export class HabilidadesComponent implements OnInit {
   public getHabilidades():void{
     this.habilidadesService.getHabilidades().subscribe({
       next:(Response: Habilidades[]) =>{
-        this.habilidades=Response;
+        const skillOrder:string[] = ['General', 'Frontend', 'Backend']
+        const orderedSkills = Response.sort((a, b) => {
+          const indexA = skillOrder.indexOf(a.title);
+          const indexB = skillOrder.indexOf(b.title);
+        
+          return indexA - indexB;
+        });
+        this.habilidades = orderedSkills;
         this.loading = false
       },
       error:(error:HttpErrorResponse)=>{
@@ -40,7 +45,6 @@ export class HabilidadesComponent implements OnInit {
       }
     })
   }
-
 
   public onAddHabilidades(addForm: NgForm){
     document.getElementById("add-habilidades-form")?.click();

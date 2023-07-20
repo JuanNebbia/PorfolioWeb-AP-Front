@@ -1,7 +1,6 @@
-import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { Informacion } from 'src/app/models/informacion';
-import { HeaderService } from 'src/app/services/header.service';
+import { MessageService } from 'src/app/services/messages.service';
+import { FormBuilder } from '@angular/forms';
 
 @Component({
   selector: 'app-contacto',
@@ -10,25 +9,22 @@ import { HeaderService } from 'src/app/services/header.service';
 })
 export class ContactoComponent implements OnInit {
 
-  public informacion:Informacion | undefined;
-  public loading:boolean = true;
+  messageForm = this.formBuilder.group({
+    message: '',
+    sender: ''
+  })
 
-  constructor(private headerService:HeaderService) { }
+  constructor(private messageService:MessageService, private formBuilder: FormBuilder,) { }
 
   ngOnInit(): void {
-    this.getInformacion();
   }
 
-  public getInformacion():void{
-    this.headerService.getInformacion().subscribe({
-      next: (response: Informacion)=>{
-        this.informacion = response;
-        this.loading = false;
-      },
-      error:(error:HttpErrorResponse)=>{
-        console.log(error.message);
-      }
-    });
+  onSendMessage():void {
+    this.messageForm.value.date = new Date()
+    console.log(this.messageForm.value);
+    
+    this.messageService.addMessage(this.messageForm.value)
+    this.messageForm.reset()
   }
 
 }

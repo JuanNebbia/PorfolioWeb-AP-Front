@@ -6,4 +6,7 @@ export interface Educacion{
     fechaInicio:Number;
     fechaFin:Number;
     imgEducacion:String;
+    dateStart: any;
+    dateEnd: any;
+    certificate: String
 }

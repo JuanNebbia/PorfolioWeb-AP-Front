@@ -17,6 +17,7 @@ export class EducacionComponent implements OnInit {
   public deleteEducacion:Educacion | undefined;
   public loading:boolean = true;
   userLogged = this.authenticationService.getLoggedUser();
+  months:String[] = ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sept', 'Oct', 'Nov', 'Dic']
 
   constructor(private educacionService:EducacionService, private authenticationService:AuthenticationService) { }
 
@@ -27,7 +28,20 @@ export class EducacionComponent implements OnInit {
   public getEducaciones():void{
     this.educacionService.getEducacion().subscribe({
       next:(Response: Educacion[]) =>{
-        this.educaciones=Response;
+        const orderedResponse = Response.sort((a:Educacion, b:Educacion) => {
+          return +b.dateStart - +a.dateStart;
+        });   
+        const finalResponse = orderedResponse.map( item => {
+          
+          item.dateStart = `${this.months[item.dateStart.toDate().getMonth()]} ${item.dateStart.toDate().getFullYear()}`
+          if(item.dateEnd){
+            item.dateEnd = `${this.months[item.dateEnd.toDate().getMonth()]} ${item.dateEnd.toDate().getFullYear()}`
+          }else{
+            item.dateEnd = 'En Curso'
+          }
+          return item
+        })
+        this.educaciones = finalResponse;
         this.loading = false;
       },
       error:(error:HttpErrorResponse)=>{

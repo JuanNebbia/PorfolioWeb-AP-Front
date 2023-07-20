@@ -8,6 +8,7 @@ export interface Informacion{
     phone:String;
     description:String;
     location:String;
+    linkedIn:String;
     imgProfile:String;
     imgBanner:String;
 }

@@ -4,10 +4,7 @@
     border: none;
     box-shadow: 0 1px 3px #999;
     border-radius: 0;
-}
-
-.card-img-overlay{
-    padding: 0;
+    background-color: #09061c
 }
 
 #banner-container{
@@ -20,7 +17,7 @@
     left:0; top:0;
     width:100%; height:100%;
     display:inline-block;
-    background: -webkit-linear-gradient(top, #09061c00 10%,#09061cff 100%); /* Chrome10+,Safari5.1+ */
+    background: -webkit-linear-gradient(bottom,#09061cff 0%, #09061c88 80%, #09061c22 100%);
 }
 
 #banner{
@@ -29,7 +26,120 @@
     object-position: top;
 }
 
-.header-img-col, .col-md-7{
+.card-img-overlay{
+    padding: 0 5%;
+    display: flex;
+    width: 100%;
+}
+
+
+.titles-container, .about-container{
+    display: flex;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+}
+
+.titles-container{
+    gap: 1rem;
+    width: 50%;
+}
+
+.profile-img-container{
+    height: 12rem; 
+    width: 12rem; 
+    overflow: hidden;
+    border-radius: 50%;
+}
+
+.profile-img{
+    width:100%; 
+    height:100%;
+    filter: grayscale(0);
+    object-fit: cover;
+}
+
+.profile-img:hover{
+    filter: grayscale(1);
+    transition: filter 0.1s;
+}
+
+.titles-inner-container{
+    width: fit-content;
+}
+
+.card-title{
+    color: #eee;
+    margin: 0;
+    font-size: 2rem;
+}
+
+.card-subtitle{
+    color: #eee;
+    font-weight: 400;
+    margin-bottom: 0.6rem;
+    font-size: 1.5rem;
+}
+
+.card-location{
+    
+    color: #eee;
+    font-weight: 200;
+    font-size: 0.8rem;
+}
+
+hr{
+    color: #F42BF9;
+    height: 1px;
+    width: 110%;
+    margin-top: 0.6rem;
+    margin-bottom: 0.8rem;
+    opacity: 1;
+}
+
+.about-container{
+    width: 50%;
+    padding: 10% 10% 0;
+    flex-direction: column;
+}
+
+.description-text{
+    color: #eee;
+    font-weight: 300;
+    font-family: 'Inter';
+    font-size: 0.9rem;
+    text-align: justify;
+    margin: 0;
+}
+
+.cv-btn{
+    background: none;
+    border-radius: 1rem;
+    box-shadow: none;
+    cursor: pointer;
+    padding: 0.3rem 1.5rem;
+    font-size: 0.9rem;
+    font-weight: 600;
+    font-family: 'Inter', sans-serif;
+    display: flex;
+    align-items: center;
+    border: 2px solid #2dc5b1;
+    color: #2dc5b1;
+    margin: 2rem auto;
+}
+
+.cv-btn a{
+    text-decoration: none;
+    color: #2dc5b1;
+
+}
+
+.cv-btn:hover{
+    border: 2px solid #26b394;
+    color: #26b394;
+}
+
+/* .header-img-col, .col-md-7{
     display: flex;
     padding: 0;
 }
@@ -87,35 +197,79 @@ hr{
 
 #header-locacion{
     font-size: 0.8rem;
-}
+} */
 
 
 @media screen and (max-width: 768px){
-    #titles-container{
-        text-align: center;
 
-    } 
+    #header-card{
+        height: 150vh; 
+    }
+
+    .card-img-overlay{
+        flex-direction: column;
+        align-items: center;
+        justify-content: normal;
+        width: 100%;
+        padding: 0;
+        height: 100%;
+
+    }
+
+    .titles-container{
+        height: 100vh;
+        padding: 20% 0;
+        width: 100%;
+        flex-direction: column;
+        gap: 3rem;
+    }
+
+    .profile-img-container{
+        height: 10rem; 
+        width: 10rem; 
+        overflow: hidden;
+        border-radius: 50%;
+    }
+
+    .profile-img:hover{
+        filter: none;
+    }
+
+    .card-title{
+        color: #eee;
+        margin: 0;
+        font-size: 1.6rem;
+        text-align: center;
+    }
+    
+    .card-subtitle{
+        color: #eee;
+        font-weight: 400;
+        margin-bottom: 0.6rem;
+        font-size: 1.2rem;
+        text-align: center;
+    }
+    
+    .card-location{
+        color: #eee;
+        font-weight: 200;
+        font-size: 0.8rem;
+        text-align: center;
+    }    
 
     hr{
+        width: 60%;
         margin: 1rem auto;
     }
 
-    h1{
-        font-size:2rem;
-    }
-    #profile-img-container{
-        height: 10rem; 
-        width: 10rem;
-        margin-right: auto;
-        margin-bottom: 0;
+    .about-container{
+        width: 100%;
+        padding: 3rem 10%;
+        height: fit-content;
     }
 
-    #profile-img{
-        filter: grayscale(0);
-    }
-
-    #card-body-1{
-        margin-left: auto;
+    .description-text{
+        font-size: 0.8rem;
     }
 }
 

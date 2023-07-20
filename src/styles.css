@@ -7,11 +7,17 @@ html {
 }
 
 *{
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Inter', "Helvetica Neue", sans-serif;
 }
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+html, body { height: 100%; width: 100%; }
+body { 
+  margin: 0; 
+  font-family: 'Inter', "Helvetica Neue", sans-serif; 
+  width: 100%;
+  position: relative;
+  left: 0;
+}
 
 .main-title{
   color: #bb3cc4;
@@ -24,6 +30,13 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
 .title-hover:hover{
   color: #f42bf9;
+}
+
+.section-title{
+  color: #f42bf9;
+  margin-bottom: 5rem;
+  font-size: 2.7rem;
+  text-align: center;
 }
 
 .main-text{
@@ -49,8 +62,6 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 .background-color{
   background-color: #09061c;
 }
-  
-
 
 .empty-section-outer-container{
   margin-top: -1rem;
@@ -74,7 +85,7 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 }
 
 body::-webkit-scrollbar {
-  width: 0.7rem;
+  width: 0.5rem;
   z-index: 10;
   right: 0.4rem;
 }
@@ -86,7 +97,6 @@ body::-webkit-scrollbar-track {
 body::-webkit-scrollbar-thumb {
   border-radius: 10px;
   background-color: #a728b0;
-  box-shadow: inset 0 0 3px #000;
 }
   
 body::-webkit-scrollbar-thumb:hover {
@@ -94,3 +104,11 @@ body::-webkit-scrollbar-thumb:hover {
 }
 
 
+@media screen and (max-width: 768px){
+  .section-title{
+    color: #f42bf9;
+    margin-bottom: 5rem;
+    font-size: 2.2rem;
+    text-align: center;
+  }
+}

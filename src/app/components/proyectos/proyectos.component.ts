@@ -16,18 +16,43 @@ export class ProyectosComponent implements OnInit {
   public updateProyectos:Proyectos | undefined;
   public deleteProyectos:Proyectos | undefined;
   public loading:boolean = true;
+  public bannerDisposition:String[] = [
+    "left","right","left", "right","left", "right",
+  ]
   userLogged = this.authenticationService.getLoggedUser();
+  public screenWidth:number = 0;  
+  public screenHeight:number = 0;  
+
 
   constructor(private proyectosService:ProyectosService, private authenticationService:AuthenticationService) { }
 
-  ngOnInit(): void {
+  ngOnInit() {  
     this.getProyectos()
+    this.screenWidth = window.innerWidth;  
+    this.screenHeight = window.innerHeight;  
+  }  
+
+  setStyle(i:number):any{
+    let styles
+    if(this.screenWidth > 768){
+      styles = {
+        'background': `linear-gradient(to ${this.bannerDisposition[i]}, ${this.proyectos[i].color} 50%, ${this.proyectos[i].color}4f)`
+      }
+    } else {
+      styles = {
+        'background': `linear-gradient(to top, ${this.proyectos[i].color} 65%, ${this.proyectos[i].color}4f)`
+      }
+    }
+    return styles
   }
 
   public getProyectos():void{
     this.proyectosService.getProyectos().subscribe({
       next:(Response: Proyectos[]) =>{
-        this.proyectos=Response;
+        const orderedResponse = Response.sort((a:Proyectos, b:Proyectos) => {
+          return +b.date - +a.date;
+        });        
+        this.proyectos = orderedResponse
         this.loading=false
       },
       error:(error)=>{

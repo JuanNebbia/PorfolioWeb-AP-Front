@@ -1,0 +1,36 @@
+.inbox-container{
+    min-height: 100%;
+    background-color: #09061c;
+    padding: 5rem 20%;
+}
+
+.message-item{
+    display: flex;
+    flex-direction: column;
+    color: #eee;
+}
+
+.message-sender{
+    margin-bottom: -1rem;
+    font-style: italic;
+}
+
+.message-date{
+    margin-left: auto;
+    font-size: 0.9rem;
+    color: #aaa;
+}
+
+.delete-msg-btn{
+    width: fit-content;
+    margin-left: auto;
+    border: none;
+    background-color: transparent;
+    color: #eee;
+}
+
+.no-msg{
+    color: #eee;
+    font-size: 1.2rem;
+    text-align: center;
+}

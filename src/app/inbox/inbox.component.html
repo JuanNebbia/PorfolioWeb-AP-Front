@@ -1,0 +1,19 @@
+<app-loader *ngIf='loading'></app-loader>
+<div class="inbox-container">
+    <h3 class="section-title inbox-title">Mensajes</h3>
+    <div *ngIf="messages.length !== 0; then thenBlock else elseBlock"></div>
+    <ng-template #thenBlock>
+        <div *ngFor="let message of messages; let i = index">
+            <div class="message-item">
+                <button (click)="onDeleteMessage(message.id)" class="delete-msg-btn">x</button>
+                <p class="message-content">{{message.message}}</p>
+                <p class="message-sender"> - {{message.sender}}</p>
+                <p class="message-date">{{message.date}}</p>
+                <hr>
+            </div>
+        </div>
+    </ng-template>
+    <ng-template #elseBlock>
+        <p class="no-msg">¡No hay mensajes para mostrar!</p>
+    </ng-template>
+</div>
