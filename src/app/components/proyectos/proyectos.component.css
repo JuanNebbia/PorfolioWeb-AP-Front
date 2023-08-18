@@ -164,6 +164,38 @@
     height: 3rem;
 }
 
+.gif-modal-container{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: #0008;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    padding: 3%;
+    backdrop-filter: grayscale(70%) blur(0.2rem);
+}
+
+
+.gif-modal{
+    width: fit-content;
+    max-width: 90vw;
+    height: fit-content;
+    display: flex;
+    justify-content: center;
+    box-shadow: 0 0 5px #000;
+    border-radius: 0.5rem;
+}
+
+.gif-modal img{
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+
 /* .proyects-title{
     margin-bottom: 5rem;
     font-size: 2.5rem;

@@ -28,6 +28,7 @@
         <li class="nav-item me-auto"><a class="nav-item-link title-hover" href="/porfolio#experience">EXPERIENCIA</a></li>
         <li class="nav-item me-auto"><a class="nav-item-link title-hover" href="/porfolio#proyects">PROYECTOS</a></li>
         <li class="nav-item me-auto"><a class="nav-item-link title-hover" href="/porfolio#contact">CONTACTO</a></li>
+        <li *ngIf="userLogged|async" class="nav-item me-auto"><a class="nav-item-link title-hover" href="/inbox">MENSAJES</a></li>
         <li *ngIf="userLogged|async as user" class="nav-item me-auto"><button class="nav-item icon-hover" id="btn-logout" (click)="logout()">SALIR</button></li>
       </ul>
     </div>

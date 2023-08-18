@@ -1,11 +1,12 @@
 export interface Proyectos{
     id:string;
-    title:String;
-    description:String;
-    imgProject:String;
-    linkProject:String;
-    repository:String;
-    color:String;
-    techs:String[];
+    title:string;
+    description:string;
+    imgProject:string;
+    linkProject:string;
+    gif:string;
+    repository:string;
+    color:string;
+    techs:string[];
     date:Date
 }

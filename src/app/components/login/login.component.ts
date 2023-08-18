@@ -15,14 +15,6 @@ export class LoginComponent{
   }
 
   constructor(private authenticationService:AuthenticationService){}
-
-  register(){
-    console.log(this.usuario)
-    const{email,password}=this.usuario;
-    this.authenticationService.register(email,password).then(res=>{
-      console.log("se regitró", res);
-    })
-  }
   
   login():void{
     console.log(this.usuario)

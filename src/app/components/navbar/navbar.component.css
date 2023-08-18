@@ -28,7 +28,7 @@
 }
 
 .navbar-toggler{
-    border: none;
+    border: 1px solid #222;
     color: #f42bf9;
     background-color: #09061c;
 }
@@ -39,18 +39,26 @@
         background-color: transparent;
         position: fixed;
         padding: 1.5rem 0 0 1.5rem;
+        width: 100%;
+    }
+
+    .navbar-collapse{
+        width: 100%;
     }
 
     .navbar-container{
         background-color: transparent;
         justify-content: flex-start;
+        width: 100%;
     }
    
     .navbar-list{
         gap: 1rem;   
-        background-color: #000d;
+        background-color: #103;
         width: 100%;
         border-radius: 10px;
+        border-top-left-radius: 0;
+        margin-top: 3px;
     }
 
     .navbar-list:first-child{

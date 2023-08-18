@@ -16,12 +16,14 @@ export class ProyectosComponent implements OnInit {
   public updateProyectos:Proyectos | undefined;
   public deleteProyectos:Proyectos | undefined;
   public loading:boolean = true;
-  public bannerDisposition:String[] = [
+  public bannerDisposition:string[] = [
     "left","right","left", "right","left", "right",
   ]
   userLogged = this.authenticationService.getLoggedUser();
   public screenWidth:number = 0;  
   public screenHeight:number = 0;  
+  displayGifModal:boolean = false
+  currentGif:string | undefined
 
 
   constructor(private proyectosService:ProyectosService, private authenticationService:AuthenticationService) { }
@@ -31,6 +33,18 @@ export class ProyectosComponent implements OnInit {
     this.screenWidth = window.innerWidth;  
     this.screenHeight = window.innerHeight;  
   }  
+
+  openGif(gif:string):void {
+    this.displayGifModal = true
+    this.currentGif = gif
+  }
+
+  closeGifModal(event:MouseEvent):void {
+    const clickedElement = event.target as HTMLElement
+    if(clickedElement.classList.contains('close')){
+      this.displayGifModal = false
+    }
+  }
 
   setStyle(i:number):any{
     let styles
