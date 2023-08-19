@@ -182,7 +182,7 @@
 
 .gif-modal{
     width: fit-content;
-    max-width: 90vw;
+    max-width: 70vw;
     height: fit-content;
     display: flex;
     justify-content: center;
@@ -412,6 +412,10 @@
     
     .project-icon{
         height: 2.5rem;
+    }
+
+    .gif-modal{
+        max-width: 90vw;
     }
 
 }

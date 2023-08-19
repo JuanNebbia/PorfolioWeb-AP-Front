@@ -4,7 +4,7 @@ export interface Proyectos{
     description:string;
     imgProject:string;
     linkProject:string;
-    gif:string;
+    gifProject:string;
     repository:string;
     color:string;
     techs:string[];

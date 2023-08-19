@@ -21,7 +21,7 @@ export class ScrollerComponent implements OnInit {
   }
 
   scrollToTop() {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    window.scrollTo({ top: -100, behavior: 'smooth' });
   }
 
 }
