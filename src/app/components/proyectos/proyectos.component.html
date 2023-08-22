@@ -18,6 +18,7 @@
                     </ng-template>
                     <div class="projects-container">
                         <div class="img-container" [ngClass]="{rightbanner: i % 2 !== 0}" >
+                            <!-- <iframe src="https://drive.google.com/file/d/14dSOrZPV8ItYhHwBKQsp8hVcUV6n_KZe/preview" width="640" height="480" allow="autoplay" class="project-banner"></iframe> -->
                             <img 
                                 src="{{proyecto.imgProject}}" 
                                 alt="" 
@@ -90,8 +91,6 @@
         <app-add-button id="btn-add-proyectos" data-bs-toggle="modal" data-bs-target="#addProyectosModal" (click)="onOpenModal('add')"></app-add-button>
     </div>
 </div>
-
-
 
 <!--Add Modal -->
 <div class="modal fade" id="addProyectosModal" tabindex="-1" aria-labelledby="addProyectosModal" aria-hidden="true">

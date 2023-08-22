@@ -1,13 +1,14 @@
 button{
     margin: 3rem 0 5rem;
     width: 6rem;
-    background-color: #269182;
+    background-color: #916626;
 }
 
 button:hover{
-    background-color: #42e4ce;
+    background-color: #e4ab42;
 }
 
-.bi-plus-lg{
+.bi-plus-lg, .bi-pencil-fill{
     font-size: 1.5rem;
+    color: #000000;
 }

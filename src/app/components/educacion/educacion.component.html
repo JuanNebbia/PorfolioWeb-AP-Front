@@ -51,22 +51,10 @@
                     </svg>
                 </div>
             </div>
-
         </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+        <div *ngIf="userLogged|async as user" class="update-info-section">
+            <app-add-button [btnType]="'add'" id="btn-edit-info" data-bs-toggle="modal" data-bs-target="#updateInfoModal"></app-add-button>
+        </div>
 
 
 

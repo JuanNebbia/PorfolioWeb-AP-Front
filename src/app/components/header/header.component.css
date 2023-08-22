@@ -139,6 +139,12 @@ hr{
     color: #26b394;
 }
 
+.update-info-section{
+    position: relative;
+    z-index: 100;
+    margin: -10rem auto
+}
+
 /* .header-img-col, .col-md-7{
     display: flex;
     padding: 0;

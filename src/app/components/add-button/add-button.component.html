@@ -1,3 +1,4 @@
 <button class="btn">
-    <i class="bi bi-plus-lg"></i>
+    <i *ngIf="btnType === 'add'" class="bi bi-plus-lg"></i>
+    <i *ngIf="btnType === 'update'" class="bi bi-pencil-fill"></i>
 </button>

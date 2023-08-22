@@ -23,5 +23,72 @@
           <button class="cv-btn"><a href="https://drive.google.com/uc?export=download&id=1iaZx7ReBOT_ZyDZtYWBEPQsLph6QDzwL">Descargar CV</a></button>
         </div>
       </div>
+      <div *ngIf="userLogged|async as user" class="update-info-section">
+        <app-add-button [btnType]="'update'" id="btn-edit-info" data-bs-toggle="modal" data-bs-target="#updateInfoModal" (click)="onOpenModal()"></app-add-button>
+      </div>
     </div>   
   </header>
+
+
+  <!--Update Modal -->
+<div class="modal fade" id="updateInfoModal" tabindex="-1" aria-labelledby="updateInfoModal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Editar Información</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form #updateForm="ngForm">
+                    <div class="form-group mb-3">
+                        <label for="exampleInputEmail1" class="form-label">Nombre</label>
+                        <input ngModel="{{updateInfo?.name}}" name="name" type="text" class="form-control" id="name" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleInputEmail1" class="form-label">Apellido</label>
+                        <textarea ngModel="{{updateInfo?.lastName}}" name="lastName" type="text" class="form-control" required></textarea>
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleInputPassword1" class="form-label">Titulo</label>
+                        <input ngModel="{{updateInfo?.title}}" name="title" type="text" class="form-control" id="title" min="1" max="100" step="1" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleInputPassword1" class="form-label">Email</label>
+                        <input ngModel="{{updateInfo?.email}}" name="email" type="text" class="form-control" id="email" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleInputPassword1" class="form-label">Github</label>
+                        <input ngModel="{{updateInfo?.github}}" name="github" type="text" class="form-control" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleInputPassword1" class="form-label">Teléfono</label>
+                        <input ngModel="{{updateInfo?.phone}}" name="phone" type="text" class="form-control" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleInputPassword1" class="form-label">Descripción</label>
+                        <input ngModel="{{updateInfo?.description}}" name="description" type="text" class="form-control" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleInputPassword1" class="form-label">Ubicación</label>
+                        <input ngModel="{{updateInfo?.location}}" name="location" type="text" class="form-control" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleInputPassword1" class="form-label">LinkedIn</label>
+                        <input ngModel="{{updateInfo?.linkedIn}}" name="linkedIn" type="text" class="form-control" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleInputPassword1" class="form-label">Foto de Perfil</label>
+                        <input ngModel="{{updateInfo?.imgProfile}}" name="imgProfile" type="text" class="form-control" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleInputPassword1" class="form-label">Foto de Portada</label>
+                        <input ngModel="{{updateInfo?.imgBanner}}" name="imgBanner" type="text" class="form-control" required>
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn btn-primary" (click)="onUpdateInfo(updateForm.value)" data-bs-dismiss="modal">Guardar cambios</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
