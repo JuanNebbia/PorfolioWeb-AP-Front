@@ -4,6 +4,7 @@ import { NgForm } from '@angular/forms';
 import { Educacion } from 'src/app/models/educacion';
 import { EducacionService } from 'src/app/services/educacion.service';
 import { AuthenticationService } from 'src/app/services/authentication.service';
+import { Timestamp } from 'firebase/firestore';
 
 @Component({
   selector: 'app-educacion',
@@ -22,10 +23,10 @@ export class EducacionComponent implements OnInit {
   constructor(private educacionService:EducacionService, private authenticationService:AuthenticationService) { }
 
   ngOnInit(): void {
-    this.getEducaciones()
+    this.getEducation()
   }
 
-  public getEducaciones():void{
+  public getEducation():void{
     this.educacionService.getEducacion().subscribe({
       next:(Response: Educacion[]) =>{
         const orderedResponse = Response.sort((a:Educacion, b:Educacion) => {
@@ -50,9 +51,12 @@ export class EducacionComponent implements OnInit {
     })
   }
 
-  public onAddEducacion(addForm: NgForm){
+  public onAddEducation(addForm: NgForm){
     document.getElementById("add-educacion-form")?.click();
-    this.educacionService.addEducacion(addForm.value)
+    addForm.value.dateStart = new Date(addForm.value.dateStart)
+    addForm.value.dateEnd = new Date(addForm.value.dateEnd)
+    const educationData = addForm.value
+    this.educacionService.addEducacion(educationData)
   }
 
   public onUpdateEducacion(educacion:Educacion){
