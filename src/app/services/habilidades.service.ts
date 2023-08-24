@@ -17,11 +17,14 @@ export class HabilidadesService {
     return collectionData(this.habilidadesRef, {idField: 'id'}) as Observable<Habilidades[]>
   }
 
-  public addHabilidades(habilidades:Habilidades): Promise<Object>{
-    return addDoc(this.habilidadesRef, habilidades)
+  public addHabilidades(habilidades:any): Promise<void>{
+    const habilidadesDocRef = doc(this.firestore, 'habilidades', habilidades.id)
+    return updateDoc(habilidadesDocRef, habilidades)
   }
 
   public updateHabilidades(habilidades:Habilidades): Promise<void>{
+    console.log(habilidades);
+    
     const habilidadesDocRef = doc(this.firestore, 'habilidades', habilidades.id)
     return updateDoc(habilidadesDocRef, {...habilidades})
   }

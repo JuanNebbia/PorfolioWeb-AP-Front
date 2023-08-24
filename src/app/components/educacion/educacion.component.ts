@@ -59,8 +59,6 @@ export class EducacionComponent implements OnInit {
 
   public onUpdateEducacion(educacion:Educacion){
     this.updateEducacion = educacion;
-    console.log(this.updateEducacion);
-    
     this.updateEducacion.dateStart = new Date(this.updateEducacion.dateStart)
     if(educacion.dateEnd !== ''){
       this.updateEducacion.dateEnd = new Date(this.updateEducacion.dateEnd)

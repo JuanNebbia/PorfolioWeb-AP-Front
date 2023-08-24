@@ -16,8 +16,10 @@ import { AuthenticationService } from 'src/app/services/authentication.service';
 export class HabilidadesComponent implements OnInit {
   
   public habilidades:Habilidades[]=[];
-  public updateHabilidades:Habilidades | undefined;
+  public addSkill:Habilidades | undefined;
+  public updateSkills:Habilidades | undefined;
   public deleteHabilidades:Habilidades | undefined;
+  public itemToDelete: number | undefined;
   public loading:boolean = true;
   userLogged = this.authenticationService.getLoggedUser();
 
@@ -47,34 +49,52 @@ export class HabilidadesComponent implements OnInit {
   }
 
   public onAddHabilidades(addForm: NgForm){
+    this.addSkill?.items.push(addForm.value.item)
     document.getElementById("add-habilidades-form")?.click();
-    this.habilidadesService.addHabilidades(addForm.value)
+    this.habilidadesService.addHabilidades(this.addSkill)
   }
 
-  public onUpdateHabilidades(habilidades:Habilidades){
-    this.updateHabilidades=habilidades;
+  public onUpdateHabilidades(updateForm: NgForm){
     document.getElementById("update-habilidades-form")?.click();
-    this.habilidadesService.updateHabilidades(habilidades)
+    if(this.updateSkills){
+      const newSkills: any = {
+        id: updateForm.value.id,
+        title: updateForm.value.title,
+        items: []
+      }
+      Object.entries(updateForm.value).forEach(entry => {
+        const [key, value] = entry;
+        if(key !== 'id' && key !== 'title'){
+          newSkills.items.push(value)
+        }
+      });
+      this.habilidadesService.updateHabilidades(newSkills)
+    }
   }
 
-  public onDeleteHabilidades(id:string):void{
-    this.habilidadesService.deleteHabilidades(id)
+  public onDeleteHabilidades():void{
+    if(this.itemToDelete && this.deleteHabilidades){
+      this.deleteHabilidades.items.splice(this.itemToDelete, 1)
+      this.habilidadesService.updateHabilidades(this.deleteHabilidades)
+    }
   }
 
-  public onOpenModal(mode:String, habilidades?:Habilidades):void{
+  public onOpenModal(mode:String, skill:Habilidades, item:number):void{
     const container = document.getElementById('main-container');
     const button = document.createElement('button');
     button.style.display='none';
     button.setAttribute('data-toggle', 'modal');
     if(mode ==="add"){
-      button.setAttribute('data-target', '#addHabilidadesModal')
+      this.addSkill = skill
+      button.setAttribute('data-target', '#addSkillModal')
     }
     else if(mode ==='delete'){
-      this.deleteHabilidades=habilidades;
+      this.deleteHabilidades = skill;
+      this.itemToDelete = item;
       button.setAttribute('data-target', '#deleteHabilidadesModal')
     }
     else if(mode ==='update'){
-      this.updateHabilidades=habilidades;
+      this.updateSkills = skill;
       button.setAttribute('data-target', '#updateHabilidadesModal')
     }
     container?.appendChild(button);
