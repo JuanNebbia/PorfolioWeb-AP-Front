@@ -51,14 +51,6 @@ body {
   color: #fff;
 }
 
-.edit-btn-container{
-  display: flex;
-  justify-content: center;
-  background-color: #067162;
-  width: fit-content;
-  border-radius: 0.7rem;
-}
-
 .background-color{
   background-color: #09061c;
 }

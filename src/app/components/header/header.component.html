@@ -24,7 +24,9 @@
         </div>
       </div>
       <div *ngIf="userLogged|async as user" class="update-info-section">
-        <app-add-button [btnType]="'update'" id="btn-edit-info" data-bs-toggle="modal" data-bs-target="#updateInfoModal" (click)="onOpenModal()"></app-add-button>
+        <button class="edit-btn" data-bs-toggle="modal" data-bs-target="#updateInfoModal" (click)="onOpenModal()">
+            <i class="bi bi-pencil-fill"></i>
+        </button>
       </div>
     </div>   
   </header>

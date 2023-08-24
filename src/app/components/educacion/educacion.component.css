@@ -179,6 +179,50 @@
     margin: auto;
 }
 
+.add-btn{
+    margin: 3rem 0 5rem;
+    width: 6rem;
+    background-color: #e98a1d;
+    border: none;
+    border-radius: 0.2rem;
+}
+
+.add-btn:hover{
+    background-color: #f3ba4f;
+}
+
+.bi-plus-lg{
+    font-size: 1.5rem;
+    color: #000000;
+}
+
+.edit-btn-container{
+    display: flex;
+    align-items: center;
+}
+
+.edit-btn{
+    background-color: #1de983;
+    border-radius: 50%;
+    border: none;
+}
+
+.edit-btn:hover{
+    background-color: #48e998;
+
+}
+
+.delete-btn{
+    background-color: #e92b1d;
+    border-radius: 50%;
+    border: none;
+    margin-left: 1rem;
+}
+
+.delete-btn:hover{
+    background-color: #f15247;
+}
+
 @media screen and (max-width: 768px){
     #education{
         margin-top: -2rem;

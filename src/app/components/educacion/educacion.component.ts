@@ -37,8 +37,6 @@ export class EducacionComponent implements OnInit {
           item.dateStart = `${this.months[item.dateStart.toDate().getMonth()]} ${item.dateStart.toDate().getFullYear()}`
           if(item.dateEnd){
             item.dateEnd = `${this.months[item.dateEnd.toDate().getMonth()]} ${item.dateEnd.toDate().getFullYear()}`
-          }else{
-            item.dateEnd = 'En Curso'
           }
           return item
         })
@@ -60,9 +58,17 @@ export class EducacionComponent implements OnInit {
   }
 
   public onUpdateEducacion(educacion:Educacion){
-    this.updateEducacion=educacion;
+    this.updateEducacion = educacion;
+    console.log(this.updateEducacion);
+    
+    this.updateEducacion.dateStart = new Date(this.updateEducacion.dateStart)
+    if(educacion.dateEnd !== ''){
+      this.updateEducacion.dateEnd = new Date(this.updateEducacion.dateEnd)
+    }else{
+      delete this.updateEducacion.dateEnd
+    }
     document.getElementById("update-educacion-form")?.click();
-    this.educacionService.updateEducacion(educacion)
+    this.educacionService.updateEducacion(this.updateEducacion)
   }
 
   public onDeleteEducacion(idEducacion:string):void{
@@ -78,11 +84,12 @@ export class EducacionComponent implements OnInit {
       button.setAttribute('data-target', '#addEducacionModal')
     }
     else if(mode ==='delete'){
-      this.deleteEducacion=educacion;
+      this.deleteEducacion = educacion;
       button.setAttribute('data-target', '#deleteEducacionModal')
     }
     else if(mode ==='update'){
-      this.updateEducacion=educacion;
+
+      this.updateEducacion = educacion;
       button.setAttribute('data-target', '#updateEducacionModal')
     }
     container?.appendChild(button);

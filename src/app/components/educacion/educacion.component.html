@@ -5,6 +5,14 @@
         <div *ngFor="let educacion of educaciones; let i = index" class="educaciones-container" >
             <div class="education-item">
                 <div *ngIf="i % 2 === 0" class="line-container-left">
+                    <div *ngIf="userLogged|async" class="edit-btn-container">
+                        <button class="edit-btn" data-bs-toggle="modal" data-bs-target="#updateEducacionModal" (click)="onOpenModal('update', educacion)">
+                            <i class="bi bi-pencil-fill"></i>
+                        </button>
+                        <button class="delete-btn" data-bs-toggle="modal" data-bs-target="#deleteEducacionModal" (click)="onOpenModal('delete', educacion)">
+                            <i class="bi bi-trash-fill"></i>
+                        </button>
+                    </div>
                     <svg id="Capa_2" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 87.7 239.72" id="line-icon">
                         <defs>
                             <style>.cls-1{fill:#9718a0;}.cls-2{fill:#f40be9;filter:url(#drop-shadow-1);}.cls-3{clip-path:url(#clippath);}.cls-4{fill:none;}</style>
@@ -25,7 +33,7 @@
                     </svg>
                 </div>
                 <div class="education-card" [ngClass]="{left: i % 2 !== 0} ">
-                    <p class="education-item-date">{{educacion.dateStart}} / {{educacion.dateEnd}}</p>
+                    <p class="education-item-date">{{educacion.dateStart}} / {{educacion.dateEnd ?? 'En curso'}}</p>
                     <h6 class="education-item-title">{{educacion.title}}</h6>
                     <p class="education-item-institution">{{educacion.institution}}</p>
                     <button *ngIf="educacion.certificate" class="certificate-btn"><a href="{{educacion.certificate}}" target="_blank">Ver Certificado</a></button>
@@ -49,18 +57,28 @@
                             </g>
                         </g>
                     </svg>
+                    <div *ngIf="userLogged|async" class="edit-btn-container">
+                        <button class="edit-btn" data-bs-toggle="modal" data-bs-target="#updateEducacionModal" (click)="onOpenModal('update', educacion)">
+                            <i class="bi bi-pencil-fill"></i>
+                        </button>
+                        <button class="delete-btn" data-bs-toggle="modal" data-bs-target="#deleteEducacionModal" (click)="onOpenModal('delete', educacion)">
+                            <i class="bi bi-trash-fill"></i>
+                        </button>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div *ngIf="userLogged|async as user" class="update-info-section">
-            <app-add-button [btnType]="'add'" id="btn-edit-info" data-bs-toggle="modal" data-bs-target="#addEducacionModal"></app-add-button>
-        </div>
+        </div> 
+        <div *ngIf="userLogged|async as user" class="add-education-section">
+            <button class="add-btn" data-bs-toggle="modal" data-bs-target="#addEducationModal">
+                <i class="bi bi-plus-lg"></i>
+            </button>
+          </div>
     </div>
 </div>
 
-<div *ngIf="userLogged|async as user" class="background-color empty-section-outer-container">
+<div *ngIf="userLogged|async as user" class="empty-section-outer-container">
     <div *ngIf="educaciones?.length==0" class="empty-section-container">
-        <h3 class="card-title title-hover education-title">Educación</h3>
+        <h3 class="card-title title-hover education-title">Formación</h3>
         <div>
             <h4 class="empty-section-title">¡No hay estudios para mostrar aun!</h4>
             <p class="empty-section-text text-muted">Click aquí abajo para agregar nuevas entradas</p>
@@ -70,7 +88,7 @@
 </div>
 
 <!--Add Modal -->
-<div class="modal fade" id="addEducacionModal" tabindex="-1" aria-labelledby="addEducacionModal" aria-hidden="true">
+<div class="modal fade" id="addEducationModal" tabindex="-1" aria-labelledby="addEducacionModal" aria-hidden="true">
     <div class="modal-dialog">
     <div class="modal-content">
         <div class="modal-header">
@@ -80,12 +98,16 @@
         <div class="modal-body">
             <form #addForm="ngForm" (ngSubmit)="onAddEducation(addForm)">
                 <div class="mb-3">
+                    <label for="education-form-title" class="form-label">Titulo</label>
+                    <input ngModel name="title" type="text" class="form-control" id="education-form-title" required>
+                </div>
+                <div class="mb-3">
                     <label for="education-form-institution" class="form-label">Institución</label>
                     <input ngModel name="institution" type="text" class="form-control" id="education-form-institution" required>
                 </div>
                 <div class="mb-3">
-                    <label for="education-form-title" class="form-label">Titulo</label>
-                    <input ngModel name="title" type="text" class="form-control" id="education-form-title" required>
+                    <label for="education-form-certificate" class="form-label">Link a certificado</label>
+                    <input ngModel name="certificate" type="text" class="form-control" id="edutacion-form-certificate">
                 </div>
                 <div class="mb-3 form-check">
                     <label class="form-check-label" for="exampleCheck1">Fecha de inicio</label>
@@ -94,10 +116,6 @@
                 <div class="mb-3 form-check">
                     <label class="form-check-label" for="education-date-end">Fecha de finalización</label>
                     <input ngModel name="dateEnd" class="mx-2" type="date" id="education-date-end">
-                </div>
-                <div class="mb-3">
-                    <label for="education-form-certificate" class="form-label">Link a certificado</label>
-                    <input ngModel name="certificate" type="text" class="form-control" id="edutacion-form-certificate">
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
@@ -117,21 +135,27 @@
                 <form #updateForm="ngForm">
                     <div class="form-group mb-3" hidden>
                         <label for="exampleInputEmail1" class="form-label">ID</label>
-                        <input ngModel="{{updateEducacion?.id}}" name="id" type="text" class="form-control" id="nivel" placeholder="por ej. universitario" required>
-                    </div>
-                    <div class="mb-3">
-                        <label for="exampleInputPassword1" class="form-label">Institución</label>
-                        <input ngModel="{{updateEducacion?.institution}}" name="institucion" type="text" class="form-control" id="institucion" placeholder="por ej. UBA" required>
+                        <input ngModel="{{updateEducacion?.id}}" name="id" type="text" class="form-control" id="nivel" required>
                     </div>
                     <div class="mb-3">
                         <label for="exampleInputPassword1" class="form-label">Titulo</label>
-                        <input ngModel="{{updateEducacion?.title}}" name="titulo" type="text" class="form-control" id="titulo" placeholder="por ej. Ingenieria en sistemas" required>
+                        <input ngModel="{{updateEducacion?.title}}" name="title" type="text" class="form-control" id="titulo" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleInputPassword1" class="form-label">Institución</label>
+                        <input ngModel="{{updateEducacion?.institution}}" name="institution" type="text" class="form-control" id="institucion" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleInputPassword1" class="form-label">Link a certificado</label>
+                        <input ngModel="{{updateEducacion?.certificate}}" name="certificate" type="text" class="form-control" id="certificate" required>
                     </div>
                     <div class="mb-3 form-check">
-                        <label class="form-check-label" for="exampleCheck1">Año de inicio</label>
-                        <input ngModel="{{updateEducacion?.dateStart}}" name="fechaInicio" class="mx-2" type="number" min="1900" max="2099" step="1" value="2022" required>
-                        <label class="form-check-label" for="exampleCheck1">Año de finalización</label>
-                        <input ngModel="{{updateEducacion?.dateEnd}}" name="fechaFin" class="mx-2" type="number" min="1900" max="2099" step="1" value="2022">
+                        <label class="form-check-label" for="exampleCheck1">Fecha de inicio</label>
+                        <input ngModel="{{updateEducacion?.dateStart}}" name="dateStart" class="mx-2" required type="date">
+                    </div>
+                    <div class="mb-3 form-check">
+                        <label class="form-check-label" for="exampleCheck1">Fecha de finalización</label>
+                        <input ngModel="{{updateEducacion?.dateEnd}}" name="dateEnd" class="mx-2" type="date">
                     </div>
                     <div class="modal-footer">
                         <button class="btn btn-primary" (click)="onUpdateEducacion(updateForm.value)">Guardar cambios</button>
@@ -147,11 +171,11 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Borrar Educación: {{deleteEducacion?.title}}</h5>
+                <h5 class="modal-title" id="exampleModalLabel">Borrar Formación: {{deleteEducacion?.title}}</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <p>¿Seguro querés eliminar esta educación?</p>
+                <p>¿Seguro querés eliminar esta formación?</p>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
