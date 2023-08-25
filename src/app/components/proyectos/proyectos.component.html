@@ -87,7 +87,7 @@
                 <h4 class="empty-section-title">¡No hay proyectos para mostrar aun!</h4>
                 <p *ngIf="userLogged|async as user" class="text-muted">Click aquí abajo para agregar nuevas entradas</p>
             </div>
-            <button class="add-btn" data-bs-toggle="modal" data-bs-target="#addProjectModal" (click)="onOpenModal('add')">
+            <button *ngIf="userLogged|async as user" class="add-btn" data-bs-toggle="modal" data-bs-target="#addProjectModal" (click)="onOpenModal('add')">
                 <i class="bi bi-plus-lg"></i>
             </button>
         </div>
