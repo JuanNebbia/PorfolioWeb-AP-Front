@@ -13,12 +13,13 @@ import { AuthenticationService } from 'src/app/services/authentication.service';
 export class ProyectosComponent implements OnInit {
   
   public proyectos:Proyectos[]=[];
-  public updateProyectos:Proyectos | undefined;
-  public deleteProyectos:Proyectos | undefined;
+  public updateProject:Proyectos | undefined;
+  public deleteProject:Proyectos | undefined;
   public loading:boolean = true;
   public bannerDisposition:string[] = [
     "left","right","left", "right","left", "right",
   ]
+  public techs = ['react', 'angular', 'bootstrap', 'handlebars', 'node', 'springboot', 'express', 'mongo', 'mysql', 'firebase']
   userLogged = this.authenticationService.getLoggedUser();
   public screenWidth:number = 0;  
   public screenHeight:number = 0;  
@@ -78,34 +79,37 @@ export class ProyectosComponent implements OnInit {
 
   public onAddProyectos(addForm: NgForm){
     document.getElementById("add-proyectos-form")?.click();
+    addForm.value.date = new Date(addForm.value.date)
     this.proyectosService.addProyectos(addForm.value)
   }
 
-  public onUpdateProyectos(proyectos:Proyectos){
-    this.updateProyectos=proyectos;
+  public onUpdateProyectos(project:Proyectos){
+    project.date = new Date(project.date)
+    this.updateProject = project;
     document.getElementById("update-proyectos-form")?.click();
-    this.proyectosService.updateProyectos(proyectos)
+    this.proyectosService.updateProyectos(project)
   }
 
-  public onDeleteProyectos(idProyectos:string):void{
-    this.proyectosService.deleteProyectos(idProyectos)
+  public onDeleteProyectos(idProject:string):void{
+    this.proyectosService.deleteProyectos(idProject)
   }
 
-  public onOpenModal(mode:String, proyectos?:Proyectos):void{
+  public onOpenModal(mode:String, project?:Proyectos):void{
     const container = document.getElementById('main-container');
     const button = document.createElement('button');
     button.style.display='none';
     button.setAttribute('data-toggle', 'modal');
     if(mode ==="add"){
-      button.setAttribute('data-target', '#addProyectosModal')
+      button.setAttribute('data-target', '#addProjectModal')
     }
     else if(mode ==='delete'){
-      this.deleteProyectos=proyectos;
-      button.setAttribute('data-target', '#deleteProyectosModal')
+      this.deleteProject = project;
+      button.setAttribute('data-target', '#deleteProjectModal')
     }
     else if(mode ==='update'){
-      this.updateProyectos=proyectos;
-      button.setAttribute('data-target', '#updateProyectosModal')
+      this.updateProject=project;
+      button.setAttribute('data-target', '#updateProjectModal')
+      console.log(project);
     }
     container?.appendChild(button);
     button.click();

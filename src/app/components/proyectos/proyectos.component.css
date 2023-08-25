@@ -196,6 +196,34 @@
     object-fit: cover;
 }
 
+.edit-project-section{
+    margin: auto auto 5rem;
+    display: flex;
+    gap: 1rem;
+}
+
+.update-project-btn, .delete-project-btn{
+    background-color: #1de983;
+    width: 6rem;
+    height: 3rem;
+    border: none;
+    border-radius: 0.2rem;
+}
+
+.update-project-btn:hover{
+    background-color: #48e998;
+
+}
+
+.delete-project-btn{
+    background-color: #e92b1d;
+}
+
+.delete-project-btn:hover{
+    background-color: #f15247;
+}
+
+
 /* .proyects-title{
     margin-bottom: 5rem;
     font-size: 2.5rem;
