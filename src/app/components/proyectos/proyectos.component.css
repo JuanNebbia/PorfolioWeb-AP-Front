@@ -166,6 +166,7 @@
 
 .gif-modal-container{
     position: fixed;
+    z-index: 10;
     top: 0;
     left: 0;
     width: 100vw;
@@ -179,6 +180,19 @@
     backdrop-filter: grayscale(70%) blur(0.2rem);
 }
 
+.gif-loader{
+    position: fixed;
+    height: 100vh;
+    width: 100vw;
+    z-index: 1500;
+    left: 0;
+    top: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    width: 99vw;
+}
 
 .gif-modal{
     width: fit-content;
@@ -188,6 +202,7 @@
     justify-content: center;
     box-shadow: 0 0 5px #000;
     border-radius: 0.5rem;
+    z-index: 2000;
 }
 
 .gif-modal img{
