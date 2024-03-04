@@ -16,9 +16,7 @@ export class ProyectosComponent implements OnInit {
   public updateProject:Proyectos | undefined;
   public deleteProject:Proyectos | undefined;
   public loading:boolean = true;
-  public bannerDisposition:string[] = [
-    "left","right","left", "right","left", "right",
-  ]
+  public bannerDisposition:string[] = ["left","right","left", "right","left", "right", "left", "right", "left", "right", "left", "right"]
   public techs = ['react', 'angular', 'bootstrap', 'handlebars', 'node', 'springboot', 'express', 'mongo', 'mysql', 'firebase']
   userLogged = this.authenticationService.getLoggedUser();
   public screenWidth:number = 0;  
@@ -51,11 +49,11 @@ export class ProyectosComponent implements OnInit {
     let styles
     if(this.screenWidth > 768){
       styles = {
-        'background': `linear-gradient(to ${this.bannerDisposition[i]}, ${this.proyectos[i].color} 50%, ${this.proyectos[i].color}4f)`
+        'background': `linear-gradient(to ${this.bannerDisposition[i]}, ${this.proyectos[i].color} 50%, ${this.proyectos[i].color}88)`
       }
     } else {
       styles = {
-        'background': `linear-gradient(to top, ${this.proyectos[i].color} 65%, ${this.proyectos[i].color}4f)`
+        'background': `linear-gradient(to top, ${this.proyectos[i].color} 60%, ${this.proyectos[i].color}88)`
       }
     }
     return styles
